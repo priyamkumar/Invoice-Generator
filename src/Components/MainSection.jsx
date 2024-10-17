@@ -1,10 +1,10 @@
 import React from 'react'
-import Info from './Info'
+import BillInfoForm from './BillInfoForm'
 
 export default function MainSection() {
   return (
     <div>
-      <Info />
+      <BillInfoForm />
     </div>
   )
 }
