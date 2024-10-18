@@ -2,8 +2,12 @@ import React from 'react'
 
 export default function ItemTable({items, setItems}) {
   const addRow = () => {
-    setItems(...items,{ description: "", quantity: 0, mrp: 0, rate: 0, cgst: 0, cgstAmount: 0, total: 0 })
+    setItems([...items,{ description: "", quantity: 0, mrp: 0, rate: 0, cgst: 0, cgstAmount: 0, total: 0 }])
   }
+  const removeRow = (index) => {
+    const newItems = items.filter((item,i) => i !== index);
+    setItems(newItems);
+    }
   return (
     <div className="item-table">
           <table>

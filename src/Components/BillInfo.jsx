@@ -6,18 +6,18 @@ import TotalAmount from "./TotalAmount";
 
 export default function BillInfo() {
   const [items, setItems] = useState([{
-    serial: "",
+    serial: 0,
     description: "",
-    quantity: "",
+    quantity: 0,
     unit: "",
-    price: "",
+    price: 0,
     cgst: "",
-    cgstAmount: "",
+    cgstAmount: 0,
     sgst: "",
-    sgstAmount: "",
+    sgstAmount: 0,
     igst: "",
-    igstAmount: "",
-    Amount: ""
+    igstAmount: 0,
+    Amount: 0
   }]);
   return (
       <div className="invoice-details">
