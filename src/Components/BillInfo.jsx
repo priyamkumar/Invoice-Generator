@@ -17,14 +17,14 @@ export default function BillInfo() {
     sgstAmount: 0,
     igst: "",
     igstAmount: 0,
-    Amount: 0
+    amount: 0
   }]);
   return (
       <div className="invoice-details">
       <InvoiceDetails/>
         <DateInvoiceGST />
         <ItemTable items={items} setItems={setItems}/>
-        <TotalAmount/>
+        <TotalAmount items={items}/>
       </div>
   );
 }

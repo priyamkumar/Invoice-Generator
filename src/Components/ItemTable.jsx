@@ -1,12 +1,37 @@
 import React from 'react'
 
 export default function ItemTable({items, setItems}) {
+const handleInputChange = (index, event) => {
+  const {name, value} = event.target;
+  const newItems = [...items];
+  newItems[index][name] = value;
+  const serial = parseFloat(newItems[index].serial) || 0;
+  const quantity = parseFloat(newItems[index].quantity) || 0;
+  const unit = parseFloat(newItems[index].unit) || "";
+  const price = parseFloat(newItems[index].price) || 0;
+  const cgstRate = parseFloat(newItems[index].cgst) || 0;
+  const cgstAmount = (price * cgstRate / 100) * quantity;
+  const sgstRate = parseFloat(newItems[index].sgst) || 0;
+  const sgstAmount = (price * sgstRate / 100) * quantity;
+  const igstRate = parseFloat(newItems[index].igst) || 0;
+  const igstAmount = (price * igstRate / 100) * quantity;
+  const amount = (price * quantity) + cgstAmount + sgstAmount + igstAmount;
+
+  newItems[index].cgstAmount = cgstAmount.toFixed(2);
+  newItems[index].sgstAmount = sgstAmount.toFixed(2);
+  newItems[index].igstAmount = igstAmount.toFixed(2);
+  newItems[index].amount = amount.toFixed(2);
+
+  setItems(newItems);
+}
+
   const addRow = () => {
     setItems([...items,{ description: "", quantity: 0, mrp: 0, rate: 0, cgst: 0, cgstAmount: 0, total: 0 }])
   }
   const removeRow = (index) => {
     const newItems = items.filter((item,i) => i !== index);
     setItems(newItems);
+    console.log(items);
     }
   return (
     <div className="item-table">
@@ -59,7 +84,7 @@ export default function ItemTable({items, setItems}) {
                   </td>
                   <td>
                     <input
-                      type="number"
+                      type="text"
                       name="unit"
                       value={item.unit}
                       onChange={(e) => handleInputChange(index, e)}
