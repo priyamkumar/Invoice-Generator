@@ -1,73 +1,140 @@
-* {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
+/* General Page Theme */
+body {
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+  font-family: Arial, sans-serif;
 }
 
+h2 {
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Header */
 .header-container {
-  margin: 30px 30px 0;
+  padding: 20px;
+  background-color: #1a1a1a;
   display: flex;
   justify-content: space-between;
-  font-weight: 500;
-  border-bottom: 3px solid black;
+  align-items: center;
+}
+
+.header-container h2 {
+  margin: 0;
+  font-size: 24px;
 }
 
 .navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  font-size: 16px;
-  gap: 5vw;
-  list-style: none;
 }
 
 .navbar ul li {
+  margin-right: 20px;
   cursor: pointer;
 }
-.container {
-  margin-top: 40px;
-  display: flex;
-  gap: 30vw;
-  justify-content: space-between;
-  width: 90vw;
+
+.navbar ul li:hover {
+  text-decoration: underline;
 }
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-left: 30px;
-}
-.invoice-details input {
-  width: 20vw;
-}
-.invoice-details textarea {
-  width: 20vw;
-  resize: none;
-}
-.date-invoice-gst
-{
-  margin: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-table {
+
+/* Input Fields */
+input[type="text"], input[type="number"], input[type="phone"], input[type="email"], input[type="date"], textarea {
+  background-color: #4d4d4d; /* Grey background */
+  color: #fff; /* White text */
+  border: 1px solid #666;
+  padding: 8px;
+  margin-bottom: 10px;
   width: 100%;
-  border-collapse: collapse; 
 }
 
-th, td {
-  border: 1px solid #ddd; 
-  padding: 8px; 
-  text-align: center; 
+input::placeholder, textarea::placeholder {
+  color: #bbb; /* Light grey placeholder */
 }
 
-th {
-  background-color: #f2f2f2; 
-  font-weight: bold; 
+input[readonly] {
+  background-color: #333; /* Darker background for readonly fields */
 }
 
-tr:nth-child(even) {
-  background-color: #f9f9f9; 
+/* Labels */
+label {
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
 }
 
-tr:hover {
-  background-color: #f1f1f1; 
+/* Card Containers */
+.card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* Total Amount Section */
+.total-amount {
+  color: #fff;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  text-align: right;
+}
+
+.total-amount p {
+  margin: 5px 0;
+}
+
+.total-amount span {
+  margin-left: 50px;
+}
+
+.total-amount b {
+  font-size: 18px;
+}
+
+.item-table {
+  margin-top: 20px;
+}
+
+.item-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  background-color: #1a1a1a;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.input-group {
+  width: calc(33.3% - 10px);
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #555;
 }

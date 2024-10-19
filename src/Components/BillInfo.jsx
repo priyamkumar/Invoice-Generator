@@ -8,13 +8,13 @@ export default function BillInfo() {
   const [items, setItems] = useState([{
     serial: 0,
     description: "",
-    quantity: 0,
+    quantity: 1,
     unit: "",
     price: 0,
     cgst: "",
     cgstAmount: 0,
-    sgst: "",
-    sgstAmount: 0,
+    utgst: "",
+    utgstAmount: 0,
     igst: "",
     igstAmount: 0,
     amount: 0

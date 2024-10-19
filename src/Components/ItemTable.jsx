@@ -5,20 +5,19 @@ const handleInputChange = (index, event) => {
   const {name, value} = event.target;
   const newItems = [...items];
   newItems[index][name] = value;
-  const serial = parseFloat(newItems[index].serial) || 0;
-  const quantity = parseFloat(newItems[index].quantity) || 0;
-  const unit = parseFloat(newItems[index].unit) || "";
+  const quantity = parseFloat(newItems[index].quantity) || 1;
+  console.log(newItems[index].unit);
   const price = parseFloat(newItems[index].price) || 0;
   const cgstRate = parseFloat(newItems[index].cgst) || 0;
   const cgstAmount = (price * cgstRate / 100) * quantity;
-  const sgstRate = parseFloat(newItems[index].sgst) || 0;
-  const sgstAmount = (price * sgstRate / 100) * quantity;
+  const utgstRate = parseFloat(newItems[index].utgst) || 0;
+  const utgstAmount = (price * utgstRate / 100) * quantity;
   const igstRate = parseFloat(newItems[index].igst) || 0;
   const igstAmount = (price * igstRate / 100) * quantity;
-  const amount = (price * quantity) + cgstAmount + sgstAmount + igstAmount;
+  const amount = price * quantity;
 
   newItems[index].cgstAmount = cgstAmount.toFixed(2);
-  newItems[index].sgstAmount = sgstAmount.toFixed(2);
+  newItems[index].utgstAmount = utgstAmount.toFixed(2);
   newItems[index].igstAmount = igstAmount.toFixed(2);
   newItems[index].amount = amount.toFixed(2);
 
@@ -26,151 +25,151 @@ const handleInputChange = (index, event) => {
 }
 
   const addRow = () => {
-    setItems([...items,{ description: "", quantity: 0, mrp: 0, rate: 0, cgst: 0, cgstAmount: 0, total: 0 }])
+    setItems([...items,{serial: items.length + 1, description: "", quantity: 1, unit: "", price: 0, cgst: 0, cgstAmount: 0 ,utgst: 0, utgstAmount: 0,igst: 0, igstAmount: 0, amount: 0 }])
   }
   const removeRow = (index) => {
-    const newItems = items.filter((item,i) => i !== index);
-    setItems(newItems);
-    console.log(items);
-    }
+    const newItems = [...items];
+    newItems.splice(index, 1);
+    const updatedItems = newItems.map((item, idx) => ({
+      ...item,
+      serial: idx + 1
+    }));
+    setItems(updatedItems);
+  };
   return (
     <div className="item-table">
-          <table>
-          <thead>
-            <tr>
-            <th>S. No.</th>
-              <th>Description</th>
-              <th>Quantity</th>
-              <th>Unit</th>
-              <th>Price</th>
-              <th>CGST</th>
-              <th>CGST Amount</th>
-              <th>SGST</th>
-              <th>SGST Amount</th>
-              <th>IGST</th>
-              <th>IGST Amount</th>
-              <th>Amount</th>
-            </tr>
-            </thead>
-            <tbody>
-                {items.map((item, index) => (
-                  <tr key={index}>
-                    <td>
-                    <input
-                      type="text"
-                      name="serial"
-                      value={item.serial}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="Serial No."
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      name="description"
-                      value={item.description}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="Item description"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      name="quantity"
-                      value={item.quantity}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="Quantity"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      name="unit"
-                      value={item.unit}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="Unit"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      name="price"
-                      value={item.price}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="Price"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      name="cgst"
-                      value={item.cgst}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="CGST %"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      name="cgstAmount"
-                      value={item.cgstAmount}
-                      readOnly
-                      placeholder="CGST Amount"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      name="sgst"
-                      value={item.sgst}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="SGST %"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      name="sgstAmount"
-                      value={item.sgstAmount}
-                      readOnly
-                      placeholder="SGST Amount"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      name="igst"
-                      value={item.igst}
-                      onChange={(e) => handleInputChange(index, e)}
-                      placeholder="IGST %"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      name="igstAmount"
-                      value={item.igstAmount}
-                      readOnly
-                      placeholder="IGST Amount"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      name="amount"
-                      value={item.amount}
-                      readOnly
-                      placeholder="Amount"
-                    />
-                  </td>
-                  <td>
-                    <button onClick={() => removeRow(index)}>Remove</button>
-                  </td>
-                </tr>
-                ))}
-            </tbody>
-          </table>
-          <button type="button" onClick={addRow}>Add Item</button>
-        </div>
+  {items.map((item, index) => (
+    <div className="item-row" key={index}>
+      {/* First Row */}
+      <div className="input-group">
+        <label>S. No.</label>
+        <input
+          type="number"
+          name="serial"
+          value={item.serial}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="Serial No."
+        />
+      </div>
+      <div className="input-group">
+        <label>Description</label>
+        <input
+          type="text"
+          name="description"
+          value={item.description}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="Item description"
+        />
+      </div>
+      <div className="input-group">
+        <label>Quantity</label>
+        <input
+          type="number"
+          name="quantity"
+          value={item.quantity}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="Quantity"
+        />
+      </div>
+      <div className="input-group">
+        <label>Unit</label>
+        <input
+          type="text"
+          name="unit"
+          value={item.unit}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="Unit"
+        />
+      </div>
+      <div className="input-group">
+        <label>Price</label>
+        <input
+          type="number"
+          name="price"
+          value={item.price}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="Price"
+        />
+      </div>
+
+      {/* Second Row */}
+      <div className="input-group">
+        <label>CGST (%)</label>
+        <input
+          type="number"
+          name="cgst"
+          value={item.cgst}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="CGST %"
+        />
+      </div>
+      <div className="input-group">
+        <label>CGST Amount</label>
+        <input
+          type="text"
+          name="cgstAmount"
+          value={item.cgstAmount}
+          readOnly
+          placeholder="CGST Amount"
+        />
+      </div>
+      <div className="input-group">
+        <label>UTGST (%)</label>
+        <input
+          type="number"
+          name="utgst"
+          value={item.utgst}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="UTGST %"
+        />
+      </div>
+      <div className="input-group">
+        <label>UTGST Amount</label>
+        <input
+          type="text"
+          name="utgstAmount"
+          value={item.utgstAmount}
+          readOnly
+          placeholder="UTGST Amount"
+        />
+      </div>
+      <div className="input-group">
+        <label>IGST (%)</label>
+        <input
+          type="number"
+          name="igst"
+          value={item.igst}
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="IGST %"
+        />
+      </div>
+      <div className="input-group">
+        <label>IGST Amount</label>
+        <input
+          type="text"
+          name="igstAmount"
+          value={item.igstAmount}
+          readOnly
+          placeholder="IGST Amount"
+        />
+      </div>
+      <div className="input-group">
+        <label>Total Amount</label>
+        <input
+          type="text"
+          name="amount"
+          value={item.amount}
+          readOnly
+          placeholder="Amount"
+        />
+      </div>
+
+      <button onClick={() => removeRow(index)}>Remove</button>
+    </div>
+  ))}
+
+  <button type="button" onClick={addRow}>Add Item</button>
+</div>
+
   )
 }
