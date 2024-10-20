@@ -47,6 +47,7 @@ const handleInputChange = (index, event) => {
           type="number"
           name="serial"
           value={item.serial}
+          min="0"
           onChange={(e) => handleInputChange(index, e)}
           placeholder="Serial No."
         />
@@ -67,6 +68,7 @@ const handleInputChange = (index, event) => {
           type="number"
           name="quantity"
           value={item.quantity}
+          min="0"
           onChange={(e) => handleInputChange(index, e)}
           placeholder="Quantity"
         />
@@ -87,6 +89,7 @@ const handleInputChange = (index, event) => {
           type="number"
           name="price"
           value={item.price}
+          min="0"
           onChange={(e) => handleInputChange(index, e)}
           placeholder="Price"
         />
@@ -99,6 +102,7 @@ const handleInputChange = (index, event) => {
           type="number"
           name="cgst"
           value={item.cgst}
+          min="0"
           onChange={(e) => handleInputChange(index, e)}
           placeholder="CGST %"
         />
@@ -119,6 +123,7 @@ const handleInputChange = (index, event) => {
           type="number"
           name="utgst"
           value={item.utgst}
+          min="0"
           onChange={(e) => handleInputChange(index, e)}
           placeholder="UTGST %"
         />
@@ -139,6 +144,7 @@ const handleInputChange = (index, event) => {
           type="number"
           name="igst"
           value={item.igst}
+          min="0"
           onChange={(e) => handleInputChange(index, e)}
           placeholder="IGST %"
         />
@@ -168,7 +174,7 @@ const handleInputChange = (index, event) => {
     </div>
   ))}
 
-  <button type="button" onClick={addRow}>Add Item</button>
+  <button type="button" id="add-btn" onClick={addRow}>Add Item</button>
 </div>
 
   )

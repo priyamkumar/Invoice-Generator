@@ -3,6 +3,7 @@ import InvoiceDetails from "./InvoiceDetails";
 import DateInvoiceGST from "./DateInvoiceGST";
 import ItemTable from "./ItemTable";
 import TotalAmount from "./TotalAmount";
+import PreviewPdfButton from "./PreviewPdfButton";
 
 export default function BillInfo() {
   const [items, setItems] = useState([{
@@ -25,6 +26,7 @@ export default function BillInfo() {
         <DateInvoiceGST />
         <ItemTable items={items} setItems={setItems}/>
         <TotalAmount items={items}/>
+        <PreviewPdfButton />
       </div>
   );
 }

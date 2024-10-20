@@ -41,16 +41,23 @@ h2 {
 }
 
 /* Input Fields */
-input[type="text"], input[type="number"], input[type="phone"], input[type="email"], input[type="date"], textarea {
+input[type="text"],
+input[type="number"],
+input[type="phone"],
+input[type="email"],
+input[type="date"],
+textarea {
   background-color: #4d4d4d; /* Grey background */
   color: #fff; /* White text */
   border: 1px solid #666;
   padding: 8px;
   margin-bottom: 10px;
   width: 100%;
+  resize: none;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #bbb; /* Light grey placeholder */
 }
 
@@ -137,4 +144,23 @@ button {
 
 button:hover {
   background-color: #555;
+}
+
+.preview-pdf-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.preview-pdf-buttons a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.date-invoice-gst {
+  padding: 20px;
+}
+
+#add-btn {
+  margin: 10px;
 }
