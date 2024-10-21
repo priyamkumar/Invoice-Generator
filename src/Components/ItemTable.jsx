@@ -6,7 +6,6 @@ const handleInputChange = (index, event) => {
   const newItems = [...items];
   newItems[index][name] = value;
   const quantity = parseFloat(newItems[index].quantity) || 1;
-  console.log(newItems[index].unit);
   const price = parseFloat(newItems[index].price) || 0;
   const cgstRate = parseFloat(newItems[index].cgst) || 0;
   const cgstAmount = (price * cgstRate / 100) * quantity;

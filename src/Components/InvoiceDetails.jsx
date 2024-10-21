@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 
-export default function InvoiceDetails() {
-  const [details, setDetails] = useState({
-    cName: "",
-    cAddress: "",
-    cPhone: "",
-    cEmail: "",
-    clientName: "",
-    clientAddress: "",
-    clientPhone: "",
-    clientEmail: "",
-  });
+export default function InvoiceDetails({details, setDetails}) {
   const handleDetails = (e) => {
     const { name, value } = e.target;
     setDetails((prev) => {
@@ -18,14 +8,9 @@ export default function InvoiceDetails() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(details);
-  };
-
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      <form >
         <div className="card">
           <label htmlFor="com-Name">Company Name </label>
           <input

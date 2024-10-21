@@ -1,27 +1,28 @@
-import React from 'react';
+import React from "react";
 
-const DocumentPreview = ({ companyInfo, clientInfo, invoiceDetails, items, totalAmount, totalGst }) => {
+const DocumentPreview = ({details}) => {
+  const {cAddress, cEmail, cName, cPhone, clientAddress ,clientEmail, clientName, clientPhone} = details
   return (
     <div className="invoice-preview">
       <div className="header">
-        <h2>{companyInfo.name}</h2>
-        <p>{companyInfo.address}</p>
-        <p>Phone: {companyInfo.phone}</p>
-        <p>Email: {companyInfo.email}</p>
+        <h2>{cName}</h2>
+        <p>{cAddress}</p>
+        <p>Phone: {cPhone}</p>
+        <p>Email: {cEmail}</p>
       </div>
 
       <div className="client-info">
         <h3>Bill To:</h3>
-        <p>{clientInfo.name}</p>
-        <p>{clientInfo.address}</p>
-        <p>Phone: {clientInfo.phone}</p>
-        <p>Email: {clientInfo.email}</p>
+        <p>{clientName}</p>
+        <p>{clientAddress}</p>
+        <p>Phone: {clientPhone}</p>
+        <p>Email: {clientEmail}</p>
       </div>
 
       <div className="invoice-details">
-        <p>Invoice Number: {invoiceDetails.invoiceNumber}</p>
-        <p>Invoice Date: {invoiceDetails.date}</p>
-        <p>GSTIN: {invoiceDetails.gstNumber}</p>
+        <p>Invoice Number: {}</p>
+        <p>Invoice Date: {}</p>
+        <p>GSTIN: {}</p>
       </div>
 
       <table className="item-table">
@@ -38,27 +39,13 @@ const DocumentPreview = ({ companyInfo, clientInfo, invoiceDetails, items, total
             <th>Total</th>
           </tr>
         </thead>
-        <tbody>
-          {items.map((item, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{item.description}</td>
-              <td>{item.quantity}</td>
-              <td>{item.unit}</td>
-              <td>₹{item.price.toFixed(2)}</td>
-              <td>{item.cgst}%</td>
-              <td>{item.sgst}%</td>
-              <td>{item.igst}%</td>
-              <td>₹{item.total.toFixed(2)}</td>
-            </tr>
-          ))}
-        </tbody>
+        <tbody>{}</tbody>
       </table>
 
       <div className="totals">
-        <p>Total: ₹{totalAmount.toFixed(2)}</p>
-        <p>GST: ₹{totalGst.toFixed(2)}</p>
-        <b>Grand Total: ₹{(totalAmount + totalGst).toFixed(2)}</b>
+        <p>Total: ₹{}</p>
+        <p>GST: ₹{}</p>
+        <b>Grand Total: ₹{}</b>
       </div>
     </div>
   );
