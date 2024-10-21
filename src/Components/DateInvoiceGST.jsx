@@ -4,11 +4,22 @@ export default function DateInvoiceGST({ date, invoice, gst }) {
   const [billDate, setDate] = date;
   const [billNumber, setInvoice] = invoice;
   const [gstNumber, setGst] = gst;
-  console.log(billDate);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDate(name, value);
+    switch (name) {
+      case "date":
+        setDate(value);
+        break;
+      case "invoice-number":
+        setInvoice(value);
+        break;
+      case "gstNumber":
+        setGst(value);
+        break;
+      default:
+        break;
+    }
   };
   return (
     <div className="date-invoice-gst">
@@ -19,6 +30,8 @@ export default function DateInvoiceGST({ date, invoice, gst }) {
           id="invoice-number"
           placeholder="Invoice Number"
           min="0"
+          name="invoice-number"
+          onChange={handleChange}
         />
       </div>
       <div className="date">
@@ -26,7 +39,7 @@ export default function DateInvoiceGST({ date, invoice, gst }) {
         <input
           type="date"
           id="date"
-          name= "date"
+          name="date"
           placeholder="Date"
           min="01-01-2024"
           value={billDate}
@@ -35,7 +48,13 @@ export default function DateInvoiceGST({ date, invoice, gst }) {
       </div>
       <div className="gst-no">
         <label htmlFor="gst-no">GSTIN: </label>
-        <input type="text" id="gst-no" placeholder="GST Number"/>
+        <input
+          type="text"
+          id="gst-no"
+          name="gstNumber"
+          placeholder="GST Number"
+          onChange={handleChange}
+        />
       </div>
     </div>
   );

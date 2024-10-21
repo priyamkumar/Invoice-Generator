@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function InvoiceDetails({details, setDetails}) {
+export default function InvoiceDetails({ details, setDetails }) {
   const handleDetails = (e) => {
     const { name, value } = e.target;
     setDetails((prev) => {
@@ -10,7 +10,7 @@ export default function InvoiceDetails({details, setDetails}) {
 
   return (
     <div className="container">
-      <form >
+      <form>
         <div className="card">
           <label htmlFor="com-Name">Company Name </label>
           <input
@@ -82,7 +82,6 @@ export default function InvoiceDetails({details, setDetails}) {
             onChange={handleDetails}
           />
         </div>
-        <button type="submit">Submit</button>
       </form>
     </div>
   );

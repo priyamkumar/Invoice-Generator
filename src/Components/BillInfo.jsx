@@ -35,18 +35,21 @@ export default function BillInfo() {
     clientEmail: "",
   });
 
+  const totalAmount = items.reduce((acc, cur) => acc + parseFloat(cur.amount || 0), 0);
+  const totalGst = items.reduce((acc, cur) => acc + parseFloat(cur.cgstAmount || 0) + parseFloat(cur.utgstAmount || 0) + parseFloat(cur.igstAmount || 0), 0);
+
   const [invoiceNumber, setInvoiceNumber] = useState();
-  const [invoiceDate, setInvoiceDate] = useState();
+  const [invoiceDate, setInvoiceDate] = useState("2024-01-01");
   const [gstNum, setGstNum] = useState();
 
   return (
     <div className="invoice-details">
       <InvoiceDetails details={details} setDetails={setDetails}/>
-      <DateInvoiceGST date={[invoiceDate, setInvoiceDate]} invoice={[invoiceDate, setInvoiceDate]} gst={[gstNum, setGstNum]}/>
+      <DateInvoiceGST date={[invoiceDate, setInvoiceDate]} invoice={[invoiceNumber, setInvoiceNumber]} gst={[gstNum, setGstNum]}/>
       <ItemTable items={items} setItems={setItems} />
-      <TotalAmount items={items} />
+      <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <PreviewPdfButton />
-      <DocumentPreview details={details}/>
+      <DocumentPreview items={items} details={details} date={invoiceDate} invoice={invoiceNumber} gst={gstNum} totalAmount={totalAmount} totalGst={totalGst}/>
     </div>
   );
 }

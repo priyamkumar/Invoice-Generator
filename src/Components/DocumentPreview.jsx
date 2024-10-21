@@ -1,7 +1,7 @@
 import React from "react";
 
-const DocumentPreview = ({details}) => {
-  const {cAddress, cEmail, cName, cPhone, clientAddress ,clientEmail, clientName, clientPhone} = details
+const DocumentPreview = ({items, details, date, invoice, gst, totalAmount, totalGst}) => {
+  const {cAddress, cEmail, cName, cPhone, clientAddress ,clientEmail, clientName, clientPhone} = details;
   return (
     <div className="invoice-preview">
       <div className="header">
@@ -20,9 +20,9 @@ const DocumentPreview = ({details}) => {
       </div>
 
       <div className="invoice-details">
-        <p>Invoice Number: {}</p>
-        <p>Invoice Date: {}</p>
-        <p>GSTIN: {}</p>
+        <p>Invoice Number: {invoice}</p>
+        <p>Invoice Date: {date}</p>
+        <p>GSTIN: {gst}</p>
       </div>
 
       <table className="item-table">
@@ -34,18 +34,30 @@ const DocumentPreview = ({details}) => {
             <th>Unit</th>
             <th>Price</th>
             <th>CGST</th>
-            <th>SGST</th>
+            <th>UTGST</th>
             <th>IGST</th>
             <th>Total</th>
           </tr>
         </thead>
-        <tbody>{}</tbody>
+        <tbody>{items.map((item,index) => (
+          <tr key={index}>
+            <td>{item.serial}</td>
+            <td>{item.description}</td>
+            <td>{item.quantity}</td>
+            <td>{item.unit}</td>
+            <td>{item.price}</td>
+            <td>{item.cgst}</td>
+            <td>{item.utgst}</td>
+            <td>{item.igst}</td>
+            <td>{item.amount}</td>
+          </tr>
+        ))}</tbody>
       </table>
 
       <div className="totals">
-        <p>Total: ₹{}</p>
-        <p>GST: ₹{}</p>
-        <b>Grand Total: ₹{}</b>
+        <p>Total: ₹{totalAmount.toFixed(2)}</p>
+        <p>GST: ₹{totalGst.toFixed(2)}</p>
+        <b>Grand Total: ₹{(totalAmount + totalGst).toFixed(2)}</b>
       </div>
     </div>
   );
