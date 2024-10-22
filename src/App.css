@@ -148,7 +148,7 @@ button:hover {
   background-color: #555;
 }
 
-.preview-pdf-buttons {
+.preview-heading {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -156,9 +156,14 @@ button:hover {
   gap: 10px;
 }
 
-.preview-pdf-buttons a {
+.preview-heading a {
   text-decoration: none;
   color: #fff;
+}
+
+.btn-div
+{
+  text-align: center;
 }
 
 .date-invoice-gst {
@@ -179,6 +184,8 @@ button:hover {
   font-family: Arial, sans-serif;
   background-color: #fff;
   color: #000;
+  padding-bottom: 100px;
+  min-height: 1100px; 
 }
 
 .header, .client-info, .invoice-details, .totals {
@@ -211,14 +218,16 @@ p {
 .item-table th, .item-table td {
   border: 1px solid #000;
   padding: 8px;
-  text-align: left;
+  text-align: right;
 }
 
 .item-table th {
   background-color: #fff;
   color: #000;
 }
-
+.totals{
+  text-align: right;
+}
 .totals p {
   font-size: 18px;
   margin-bottom: 10px;

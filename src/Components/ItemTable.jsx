@@ -24,7 +24,7 @@ const handleInputChange = (index, event) => {
 }
 
   const addRow = () => {
-    setItems([...items,{serial: items.length + 1, description: "", quantity: 1, unit: "", price: 0, cgst: 0, cgstAmount: 0 ,utgst: 0, utgstAmount: 0,igst: 0, igstAmount: 0, amount: 0 }])
+    setItems([...items,{serial: items.length + 1, description: "", quantity: 1, unit: "", price: 0, cgst: "", cgstAmount: 0 ,utgst: "", utgstAmount: 0,igst: "", igstAmount: 0, amount: 0 }])
   }
   const removeRow = (index) => {
     const newItems = [...items];

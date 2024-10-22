@@ -33,9 +33,9 @@ const DocumentPreview = ({items, details, date, invoice, gst, totalAmount, total
             <th>Quantity</th>
             <th>Unit</th>
             <th>Price</th>
-            <th>CGST</th>
-            <th>UTGST</th>
-            <th>IGST</th>
+            <th>CGST %</th>
+            <th>UTGST %</th>
+            <th>IGST %</th>
             <th>Total</th>
           </tr>
         </thead>
@@ -49,7 +49,7 @@ const DocumentPreview = ({items, details, date, invoice, gst, totalAmount, total
             <td>{item.cgst}</td>
             <td>{item.utgst}</td>
             <td>{item.igst}</td>
-            <td>{item.amount}</td>
+            <td>₹{item.amount}</td>
           </tr>
         ))}</tbody>
       </table>
