@@ -1,12 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import InvoiceDetails from "./InvoiceDetails";
 import DateInvoiceGST from "./DateInvoiceGST";
 import ItemTable from "./ItemTable";
 import TotalAmount from "./TotalAmount";
 import PreviewHeading from "./PreviewHeading";
 import DocumentPreview from "./DocumentPreview";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 
 export default function BillInfo() {
   const [items, setItems] = useState([
@@ -44,23 +42,6 @@ export default function BillInfo() {
   const [invoiceDate, setInvoiceDate] = useState("2024-01-01");
   const [gstNum, setGstNum] = useState();
 
-  const printRef = useRef();
-
-  const handleDownloadPdf = async () => {
-    const element = printRef.current;
-    const canvas = await html2canvas(element, { scale: 2 });  // scale: 2 for high-quality PDF
-    const data = canvas.toDataURL("image/png");
-    const pdf = new jsPDF("p", "mm", "a4"); // 'p' for portrait, 'a4' size
-    const pdfWidth = 210; // A4 width in mm
-    const elementHeight = element.offsetHeight; // Get the dynamic height of your element
-    const pdfHeight = (elementHeight * pdfWidth) / element.offsetWidth;
-    
-    pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("invoice.pdf");
-    
-    
-  };
-
   return (
     <div className="invoice-details">
       <InvoiceDetails details={details} setDetails={setDetails}/>
@@ -68,11 +49,7 @@ export default function BillInfo() {
       <ItemTable items={items} setItems={setItems} />
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <PreviewHeading />
-      <div ref={printRef}><DocumentPreview items={items} details={details} date={invoiceDate} invoice={invoiceNumber} gst={gstNum} totalAmount={totalAmount} totalGst={totalGst}/>
-      </div>
-      <div className="btn-div">
-      <button onClick={handleDownloadPdf}>Download PDF</button>
-    </div>
+      <DocumentPreview items={items} details={details} date={invoiceDate} invoice={invoiceNumber} gst={gstNum} totalAmount={totalAmount} totalGst={totalGst}/>
     </div>
   );
 }

@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useRef } from "react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
-const DocumentPreview = ({items, details, date, invoice, gst, totalAmount, totalGst}) => {
-  const {cAddress, cEmail, cName, cPhone, clientAddress ,clientEmail, clientName, clientPhone} = details;
+const DocumentPreview = ({
+  items,
+  details,
+  date,
+  invoice,
+  gst,
+  totalAmount,
+  totalGst,
+}) => {
+  const {
+    cAddress,
+    cEmail,
+    cName,
+    cPhone,
+    clientAddress,
+    clientEmail,
+    clientName,
+    clientPhone,
+  } = details;
+  const printRef = useRef();
+
+  const handleDownloadPdf = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element, { scale: 2 }); // scale: 2 for high-quality PDF
+    const data = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const imgProps = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+    pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("invoice.pdf");
+  };
+
   return (
-    <div className="invoice-preview">
+    <>
+    <div className="invoice-preview" ref={printRef}>
       <div className="header">
         <h2>{cName}</h2>
         <p>{cAddress}</p>
@@ -39,19 +75,21 @@ const DocumentPreview = ({items, details, date, invoice, gst, totalAmount, total
             <th>Total</th>
           </tr>
         </thead>
-        <tbody>{items.map((item,index) => (
-          <tr key={index}>
-            <td>{item.serial}</td>
-            <td>{item.description}</td>
-            <td>{item.quantity}</td>
-            <td>{item.unit}</td>
-            <td>{item.price}</td>
-            <td>{item.cgst}</td>
-            <td>{item.utgst}</td>
-            <td>{item.igst}</td>
-            <td>₹{item.amount}</td>
-          </tr>
-        ))}</tbody>
+        <tbody>
+          {items.map((item, index) => (
+            <tr key={index}>
+              <td>{item.serial}</td>
+              <td>{item.description}</td>
+              <td>{item.quantity}</td>
+              <td>{item.unit}</td>
+              <td>{item.price}</td>
+              <td>{item.cgst}</td>
+              <td>{item.utgst}</td>
+              <td>{item.igst}</td>
+              <td>₹{item.amount}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
 
       <div className="totals">
@@ -60,6 +98,9 @@ const DocumentPreview = ({items, details, date, invoice, gst, totalAmount, total
         <b>Grand Total: ₹{(totalAmount + totalGst).toFixed(2)}</b>
       </div>
     </div>
+    <div className="btn-div"><button onClick={handleDownloadPdf}>Download PDF</button>
+    </div>
+    </>
   );
 };
 
