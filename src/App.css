@@ -185,7 +185,20 @@ button:hover {
   min-height: 1100px;
 }
 
-.header,
+.header {
+  margin-bottom: 20px;
+}
+
+.invoice-preview h2 {
+  color:#000;
+}
+
+.invoice
+{
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
 .client-info,
 .invoice-details,
 .totals {

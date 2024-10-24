@@ -42,6 +42,8 @@ export default function BillInfo() {
   const [invoiceDate, setInvoiceDate] = useState("2024-01-01");
   const [gstNum, setGstNum] = useState();
 
+  const [invoices, setInvoices] = useState([]);
+
   return (
     <div className="invoice-details">
       <InvoiceDetails details={details} setDetails={setDetails}/>
