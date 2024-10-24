@@ -9,7 +9,8 @@ import DocumentPreview from "./DocumentPreview";
 export default function BillInfo() {
   const [items, setItems] = useState([
     {
-      serial: 0,
+      serial: 1,
+      hsn:"",
       description: "",
       quantity: 1,
       unit: "",

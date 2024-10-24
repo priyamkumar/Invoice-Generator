@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function ItemTable({items, setItems}) {
 const handleInputChange = (index, event) => {
+  console.log(index);
   const {name, value} = event.target;
   const newItems = [...items];
   newItems[index][name] = value;
@@ -24,7 +25,7 @@ const handleInputChange = (index, event) => {
 }
 
   const addRow = () => {
-    setItems([...items,{serial: items.length + 1, description: "", quantity: 1, unit: "", price: 0, cgst: "", cgstAmount: 0 ,utgst: "", utgstAmount: 0,igst: "", igstAmount: 0, amount: 0 }])
+    setItems([...items,{serial: items.length + 1, hsn: "", description: "", quantity: 1, unit: "", price: 0, cgst: "", cgstAmount: 0 ,utgst: "", utgstAmount: 0,igst: "", igstAmount: 0, amount: 0 }])
   }
   const removeRow = (index) => {
     const newItems = [...items];
@@ -49,6 +50,17 @@ const handleInputChange = (index, event) => {
           min="0"
           onChange={(e) => handleInputChange(index, e)}
           placeholder="Serial No."
+        />
+      </div>
+      <div className="input-group">
+        <label>HSN Code</label>
+        <input
+          type="text"
+          name="hsn"
+          value={item.hsn}
+          min="0"
+          onChange={(e) => handleInputChange(index, e)}
+          placeholder="HSN Code"
         />
       </div>
       <div className="input-group">

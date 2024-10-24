@@ -187,6 +187,10 @@ button:hover {
 
 .header {
   margin-bottom: 20px;
+  text-align: center;
+}
+.header p{
+  margin-bottom: 5px;
 }
 
 .invoice-preview h2 {
@@ -196,7 +200,32 @@ button:hover {
 .invoice
 {
   text-align: center;
-  border-bottom: 2px solid black;
+}
+.invoice h2 {
+  text-decoration: underline;
+  margin-top: -10px;
+}
+
+.invoice p {
+  font-size: 12px;
+}
+
+.phone-email
+{
+  text-align: right;
+}
+
+.header h2
+{
+  margin-bottom: 15px;
+}
+.header p {
+  font-size: 14px;
+}
+
+.invoice-preview .invoice-details
+{
+  text-align: right;;
 }
 
 .client-info,
