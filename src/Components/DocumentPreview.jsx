@@ -45,27 +45,54 @@ const DocumentPreview = ({
         </div>
         <div className="header">
           <h2>KUMAR ENTERPRISES</h2>
-          <p><b>Deals In: Stationery, Printing, Computer Consumable, Photostat, Consumable, Electricals Electronics & Crockery</b></p>
-          <p><b>Also Deals In: Furnitute, Woodwork, Aluminium Work, Sanitary Work & AC Service</b></p>
-          <p><b>Govt. Contractors & General Order Suppliers</b></p>
-          <p><b>S.C.O. NO. 1001-03, 2nd FLOOR, SECTOR 22-B, CHANDIGARH</b></p>
-          <p><b>Phone: 0172-3068479, Mobile: 98151-96606</b></p>
-          <p><b>GSTIN: 04AHKPK6845Q1ZN</b></p>
-          
+          <p>
+            <b>
+              Deals in: Stationery, Printing, Computer Consumable, Photostat,
+              Consumable, Electricals, Electronics & Crockery
+              <br />
+              Also Deals In: Furniture, Woodwork, Aluminum Work, Sanitary Work &
+              AC Service
+              <br />
+              Govt. Contractors & General Order Suppliers
+            </b>
+          </p>
+          <p>
+            <b>S.C.O. NO. 1001-03, 2nd FLOOR, SECTOR 22-B, CHANDIGARH</b>
+          </p>
+          <p>
+            <b>Phone: 0172-3068479, Mobile: 98151-96606</b>
+          </p>
+          <p>
+            <b>GSTIN: 04AHKPK6845Q1ZN</b>
+          </p>
         </div>
-<div className="client-invoice-details">
-        <div className="client-info">
-          <h4>Billed To:</h4>
-          <p><b>M/s {clientName}</b></p>
-          <p><b>{clientAddress}</b></p>
-          <p><b>GSTIN: {gst}</b></p>
-        </div>
+        <div className="client-invoice-details">
+          <div className="client-info">
+            <p>
+              <b>Billed To:</b>
+            </p>
+            <p>
+              <b>M/s {clientName}</b>
+            </p>
+            <p>
+              <b>{clientAddress}</b>
+            </p>
+            <p>
+              <b>GSTIN: {gst}</b>
+            </p>
+          </div>
 
-        <div className="invoice-details">
-          <h4>Invoice Details:</h4>
-          <p><b>No. : {invoice}</b></p>
-          <p><b>Date : {date}</b></p>
-        </div>
+          <div className="invoice-details">
+            <p>
+              <b>Invoice Details:</b>
+            </p>
+            <p>
+              <b>No. : {invoice}</b>
+            </p>
+            <p>
+              <b>Date : {date}</b>
+            </p>
+          </div>
         </div>
 
         <table className="item-table">
@@ -77,9 +104,9 @@ const DocumentPreview = ({
               <th>QTY.</th>
               <th>Unit</th>
               <th>Rate</th>
-              <th>UTGST %</th>
-              <th>CGST %</th>
-              <th>IGST %</th>
+              <th>UTGST</th>
+              <th>CGST</th>
+              <th>IGST</th>
               <th>Amount Before Tax</th>
               <th>Included Tax</th>
             </tr>
@@ -87,28 +114,81 @@ const DocumentPreview = ({
           <tbody>
             {items.map((item, index) => (
               <tr key={index}>
-                <td>{item.serial}</td>
-                <td>{item.hsn}</td>
-                <td>{item.description}</td>
-                <td>{item.quantity}</td>
-                <td>{item.unit}</td>
-                <td>{item.price}</td>
-                <td>{item.utgst}{item.utgst && "%"}</td>
-                <td>
-                  {item.cgst}{item.cgst && "%"}
+                <td className="table-cell">{item.serial}</td>
+                <td className="table-cell">{item.hsn}</td>
+                <td className="table-cell">{item.description}</td>
+                <td className="table-cell">{item.quantity}</td>
+                <td className="table-cell">{item.unit}</td>
+                <td className="table-cell">{item.price}</td>
+                <td className="table-cell">
+                ₹{item.utgstAmount} {`(${item.utgst}%)`}
+                  {item.utgst && "%"}
                 </td>
-                <td>{item.igst}{item.igst && "%"}</td>
-                <td>₹{item.amount}</td>
-                <td>₹{(Number(item.amount) + Number(item.cgstAmount) + Number(item.utgstAmount) + Number(item.igstAmount)).toFixed(2)}</td>
+                <td className="table-cell">
+                ₹{item.cgstAmount} {`(${item.cgst}%)`}
+                {item.cgst && "%"}
+                </td>
+                <td className="table-cell">
+                ₹{item.igstAmount} {`(${item.igst}%)`}
+                {item.igst && "%"}
+                </td>
+                <td className="table-cell">₹{item.amount}</td>
+                <td className="table-cell">
+                  ₹
+                  {(
+                    Number(item.amount) +
+                    Number(item.cgstAmount) +
+                    Number(item.utgstAmount) +
+                    Number(item.igstAmount)
+                  ).toFixed(2)}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-
-        <div className="totals">
-          <p>Total: ₹{totalAmount.toFixed(2)}</p>
-          <p>GST: ₹{totalGst.toFixed(2)}</p>
-          <b>Grand Total: ₹{(totalAmount + totalGst).toFixed(2)}</b>
+        <div className="totals-bank-details">
+          <div className="bank-details">
+            <p>
+              <b>Total Invoice Amount in Words</b>
+            </p>
+            <p>
+              <b>Total Invoice Amount in Words</b>
+            </p>
+            <p>
+              <b>Bank Name:</b>
+            </p>
+            <p>
+              <b>Bank Account Number:</b>
+            </p>
+            <p>
+              <b>Bank Branch IFSC:</b>{" "}
+            </p>
+          </div>
+          <div className="totals">
+            <p>Total: ₹{totalAmount.toFixed(2)}</p>
+            <p>GST: ₹{totalGst.toFixed(2)}</p>
+            <b>Grand Total: ₹{(totalAmount + totalGst).toFixed(2)}</b>
+          </div>
+        </div>
+        <div className="terms-signatures">
+        <div className="terms">
+          <p>
+            <b>Terms and Conditions:</b>
+          </p>
+          <ol>
+            <li>Goods once accepted will not be taken back.</li>
+            <li>
+              If payment is not made within 15 days, Interest @ 24% will be
+              charged extra.
+            </li>
+            <li>All disputes subject to Chandigarh Jurisdiction.</li>
+          </ol>
+        </div>
+        <div className="signatures">
+          <p>Receiver's Signature with seal</p>
+          <p>For KUMAR ENTERPRISES</p>
+          <p>Authorized Signatory</p>
+        </div>
         </div>
       </div>
       <div className="btn-div">

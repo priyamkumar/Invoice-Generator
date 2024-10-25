@@ -102,11 +102,6 @@ label {
   font-size: 18px;
 }
 
-.item-table {
-  margin-top: 20px;
-  padding: 15px;
-}
-
 .item-row {
   display: flex;
   flex-wrap: wrap;
@@ -277,6 +272,8 @@ p {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  padding: 15px;
+  table-layout: auto;
 }
 
 .item-table th,
@@ -291,9 +288,14 @@ p {
   background-color: #fff;
   color: #000;
 }
-.totals {
-  text-align: right;
+
+.table-cell {
+  word-wrap: break-word;
+  white-space: normal;  
+  max-width: 150px; 
+  min-width: 50px; 
 }
+
 .totals p {
   font-size: 18px;
   margin-bottom: 10px;
@@ -302,4 +304,40 @@ p {
 
 .totals b {
   font-size: 16px;
+}
+
+.terms {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.totals-bank-details
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+.bank-details p {
+  font-size: 14px;
+}
+
+.terms-signatures {
+  display: flex;
+  justify-content: space-between;
+}
+.terms
+{
+  width:40%;
+}
+.terms p {
+  text-align: center;
+}
+
+.terms ol {
+  margin-block-start: 0;
+  padding-inline-start: 14px;
+}
+
+.signatures {
+  font-size: 14px;
 }

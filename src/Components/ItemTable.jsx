@@ -180,6 +180,24 @@ const handleInputChange = (index, event) => {
           placeholder="Amount"
         />
       </div>
+      <div className="input-group">
+        <label>Total Invoice Amount in words</label>
+        <input
+          type="text"
+          name="amount"
+          value={item.amount}
+          readOnly
+          placeholder="Amount"
+        />
+      </div>
+      <div className="input-group">
+        <label>Extra</label>
+        <input
+          type="text"
+          name=""
+          readOnly
+        />
+      </div>
 
       <div className="button-container">
   <button onClick={() => removeRow(index)}>Remove</button>

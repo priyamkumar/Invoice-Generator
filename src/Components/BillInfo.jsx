@@ -36,6 +36,8 @@ export default function BillInfo() {
     clientEmail: "",
   });
 
+  const [amountInWords, setAmountInWords] = useState("");
+
   const totalAmount = items.reduce((acc, cur) => acc + parseFloat(cur.amount || 0), 0);
   const totalGst = items.reduce((acc, cur) => acc + parseFloat(cur.cgstAmount || 0) + parseFloat(cur.utgstAmount || 0) + parseFloat(cur.igstAmount || 0), 0);
 
