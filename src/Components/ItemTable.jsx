@@ -181,7 +181,9 @@ const handleInputChange = (index, event) => {
         />
       </div>
 
-      <button onClick={() => removeRow(index)}>Remove</button>
+      <div className="button-container">
+  <button onClick={() => removeRow(index)}>Remove</button>
+</div>
     </div>
   ))}
 

@@ -135,6 +135,31 @@ label {
   border-radius: 4px;
 }
 
+.button-container {
+  display: flex;
+  justify-content: flex-start; /* or flex-end/center as needed */
+  margin-top: 15px; /* Adjust margin for better spacing */
+}
+
+#remove-btn {
+  background-color: #333; /* Adjust color as needed */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Add space above */
+}
+
+
+.client-invoice-details
+{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
 button {
   background-color: #333;
   color: #fff;
@@ -201,7 +226,7 @@ button:hover {
 {
   text-align: center;
 }
-.invoice h2 {
+.invoice h3 {
   text-decoration: underline;
   margin-top: -10px;
 }
@@ -220,12 +245,12 @@ button:hover {
   margin-bottom: 15px;
 }
 .header p {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .invoice-preview .invoice-details
 {
-  text-align: right;;
+  text-align: left;
 }
 
 .client-info,
@@ -259,6 +284,7 @@ p {
   border: 1px solid #000;
   padding: 8px;
   text-align: center;
+  font-size: 14px;
 }
 
 .item-table th {
@@ -271,8 +297,9 @@ p {
 .totals p {
   font-size: 18px;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .totals b {
-  font-size: 20px;
+  font-size: 16px;
 }

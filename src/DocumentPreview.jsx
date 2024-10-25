@@ -42,16 +42,12 @@ const DocumentPreview = ({
       <div className="invoice-preview" ref={printRef}>
         <div className="invoice">
           <h2>INVOICE</h2>
-          <p>Input Tax Credit is available on this Invoice</p>
         </div>
         <div className="header">
-          <h2>{cName || "KUMAR ENTERPRISES"}</h2>
-          <p><b>Deals In: Stationery, Printing, Computer Consumable, Photostat, Consumable, Electricals Electronics & Crockery</b></p>
-          <p><b>Also Deals In: Furnitute, Woodwork, Aluminium Work, Sanitary Work & AC Service</b></p>
-          <p><b>Govt. Contractors & General Order Suppliers</b></p>
-          <p><b>S.C.O. NO. 1001-03, 2nd FLOOR, SECTOR 22-B, CHANDIGARH</b></p>
-          <p><b>GSTIN: 04AHKPK6845Q1ZN</b></p>
-          <p>Phone: 0172-3068479, Mobile: 98151-96606</p>
+          <h2>{cName}</h2>
+          <p>{cAddress}</p>
+          <p>Phone: {cPhone}</p>
+          <p>Email: {cEmail}</p>
           
         </div>
 
@@ -89,7 +85,7 @@ const DocumentPreview = ({
             {items.map((item, index) => (
               <tr key={index}>
                 <td>{item.serial}</td>
-                <td></td>
+                <td>{item.hsn}</td>
                 <td>{item.description}</td>
                 <td>{item.quantity}</td>
                 <td>{item.unit}</td>
