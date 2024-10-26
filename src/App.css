@@ -109,10 +109,11 @@ label {
   background-color: #1a1a1a;
   margin-bottom: 10px;
   border-radius: 8px;
+  gap:10px;
 }
 
 .input-group {
-  width: calc(33.3% - 10px);
+  width: calc(48% - 10px);
   margin-right: 10px;
   margin-bottom: 10px;
 }
@@ -254,17 +255,18 @@ button:hover {
   margin-bottom: 20px;
 }
 
-h2 {
+.invoice-preview h2 {
   font-size: 24px;
   margin-bottom: 5px;
+  margin-top: 0;
 }
 
-h3 {
+.invoice-preview h3 {
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-p {
+.invoice-preview p {
   margin: 0;
 }
 
@@ -324,6 +326,7 @@ p {
 .terms-signatures {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 .terms
 {
@@ -338,6 +341,22 @@ p {
   padding-inline-start: 14px;
 }
 
-.signatures {
-  font-size: 14px;
+ .signatures {
+  font-size: 10px;
+ }
+
+.receiver-signatures
+{
+  font-size: 10px;
+  margin-top: 130px;
+  width:20%;
+}
+
+.authorized {
+  margin-top: 100px !important;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
 }

@@ -69,29 +69,19 @@ const DocumentPreview = ({
         <div className="client-invoice-details">
           <div className="client-info">
             <p>
-              <b>Billed To:</b>
+              <b>Bill To</b>
             </p>
-            <p>
-              <b>M/s {clientName}</b>
-            </p>
-            <p>
-              <b>{clientAddress}</b>
-            </p>
-            <p>
-              <b>GSTIN: {gst}</b>
-            </p>
+            <p>M/s {clientName}</p>
+            <p>{clientAddress}</p>
+            <p>GSTIN: {gst}</p>
           </div>
 
           <div className="invoice-details">
             <p>
-              <b>Invoice Details:</b>
+              <b>Invoice Details</b>
             </p>
-            <p>
-              <b>No. : {invoice}</b>
-            </p>
-            <p>
-              <b>Date : {date}</b>
-            </p>
+            <p>No. : {invoice}</p>
+            <p>Date : {date}</p>
           </div>
         </div>
 
@@ -121,26 +111,23 @@ const DocumentPreview = ({
                 <td className="table-cell">{item.unit}</td>
                 <td className="table-cell">{item.price}</td>
                 <td className="table-cell">
-                ₹{item.utgstAmount} {`(${item.utgst}%)`}
-                  {item.utgst && "%"}
+                  ₹{Math.round(item.utgstAmount)} {`(${item.utgst}%)`}
                 </td>
                 <td className="table-cell">
-                ₹{item.cgstAmount} {`(${item.cgst}%)`}
-                {item.cgst && "%"}
+                  ₹{Math.round(item.cgstAmount)} {`(${item.cgst}%)`}
                 </td>
                 <td className="table-cell">
-                ₹{item.igstAmount} {`(${item.igst}%)`}
-                {item.igst && "%"}
+                  ₹{Math.round(item.igstAmount)} {`(${item.igst}%)`}
                 </td>
-                <td className="table-cell">₹{item.amount}</td>
+                <td className="table-cell">₹{Math.round(item.amount)}</td>
                 <td className="table-cell">
                   ₹
                   {(
-                    Number(item.amount) +
+                    Math.round(Number(item.amount) +
                     Number(item.cgstAmount) +
                     Number(item.utgstAmount) +
-                    Number(item.igstAmount)
-                  ).toFixed(2)}
+                    Number(item.igstAmount))
+                  )}
                 </td>
               </tr>
             ))}
@@ -151,9 +138,7 @@ const DocumentPreview = ({
             <p>
               <b>Total Invoice Amount in Words</b>
             </p>
-            <p>
-              <b>Total Invoice Amount in Words</b>
-            </p>
+            <p>{}</p>
             <p>
               <b>Bank Name:</b>
             </p>
@@ -165,30 +150,33 @@ const DocumentPreview = ({
             </p>
           </div>
           <div className="totals">
-            <p>Total: ₹{totalAmount.toFixed(2)}</p>
-            <p>GST: ₹{totalGst.toFixed(2)}</p>
-            <b>Grand Total: ₹{(totalAmount + totalGst).toFixed(2)}</b>
+            <p>Total: ₹{totalAmount}</p>
+            <p>GST: ₹{totalGst}</p>
+            <b>Grand Total: ₹{totalAmount + totalGst}</b>
           </div>
         </div>
         <div className="terms-signatures">
-        <div className="terms">
-          <p>
-            <b>Terms and Conditions:</b>
-          </p>
-          <ol>
-            <li>Goods once accepted will not be taken back.</li>
-            <li>
-              If payment is not made within 15 days, Interest @ 24% will be
-              charged extra.
-            </li>
-            <li>All disputes subject to Chandigarh Jurisdiction.</li>
-          </ol>
-        </div>
-        <div className="signatures">
-          <p>Receiver's Signature with seal</p>
-          <p>For KUMAR ENTERPRISES</p>
-          <p>Authorized Signatory</p>
-        </div>
+          <div className="terms">
+            <p>
+              <b>Terms and Conditions:</b>
+            </p>
+            <ol>
+              <li>Goods once accepted will not be taken back.</li>
+              <li>
+                If payment is not made within 15 days, Interest @ 24% will be
+                charged extra.
+              </li>
+              <li>All disputes subject to Chandigarh Jurisdiction.</li>
+            </ol>
+          </div>
+          <div className="receiver-signatures">
+            <p><b>Receiver's Signature with seal</b></p>
+          </div>
+          <div className="signatures">
+            <p>Certified that the particulars given above are true and correct.</p>
+            <p className="text-center"><b>For KUMAR ENTERPRISES</b></p>
+            <p className="authorized"><b>Authorized Signatory</b></p>
+          </div>
         </div>
       </div>
       <div className="btn-div">

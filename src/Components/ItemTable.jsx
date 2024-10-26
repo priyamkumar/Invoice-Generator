@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function ItemTable({items, setItems}) {
 const handleInputChange = (index, event) => {
-  console.log(index);
   const {name, value} = event.target;
   const newItems = [...items];
   newItems[index][name] = value;
@@ -13,13 +12,13 @@ const handleInputChange = (index, event) => {
   const utgstRate = parseFloat(newItems[index].utgst) || 0;
   const utgstAmount = (price * utgstRate / 100) * quantity;
   const igstRate = parseFloat(newItems[index].igst) || 0;
-  const igstAmount = (price * igstRate / 100) * quantity;
+  const igstAmount = Math.round((price * igstRate / 100) * quantity);
   const amount = price * quantity;
 
-  newItems[index].cgstAmount = cgstAmount.toFixed(2);
-  newItems[index].utgstAmount = utgstAmount.toFixed(2);
-  newItems[index].igstAmount = igstAmount.toFixed(2);
-  newItems[index].amount = amount.toFixed(2);
+  newItems[index].cgstAmount = cgstAmount;
+  newItems[index].utgstAmount = utgstAmount;
+  newItems[index].igstAmount = igstAmount;
+  newItems[index].amount = amount;
 
   setItems(newItems);
 }
@@ -190,14 +189,7 @@ const handleInputChange = (index, event) => {
           placeholder="Amount"
         />
       </div>
-      <div className="input-group">
-        <label>Extra</label>
-        <input
-          type="text"
-          name=""
-          readOnly
-        />
-      </div>
+      
 
       <div className="button-container">
   <button onClick={() => removeRow(index)}>Remove</button>
@@ -205,7 +197,7 @@ const handleInputChange = (index, event) => {
     </div>
   ))}
 
-  <button type="button" id="add-btn" onClick={addRow}>Add Item</button>
+  {items.length < 18 && <button type="button" id="add-btn" onClick={addRow}>Add Item</button>}
 </div>
 
   )
