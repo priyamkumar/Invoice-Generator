@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -10,6 +10,7 @@ const DocumentPreview = ({
   gst,
   totalAmount,
   totalGst,
+  amountInWords
 }) => {
   const {
     cAddress,
@@ -35,6 +36,10 @@ const DocumentPreview = ({
     pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
     pdf.save("invoice.pdf");
   };
+
+  useEffect(() => {
+    
+  }, [totalAmount, totalGst]);
 
   return (
     <>
@@ -122,11 +127,11 @@ const DocumentPreview = ({
                 <td className="table-cell">₹{Math.round(item.amount)}</td>
                 <td className="table-cell">
                   ₹
-                  {(
-                    Math.round(Number(item.amount) +
-                    Number(item.cgstAmount) +
-                    Number(item.utgstAmount) +
-                    Number(item.igstAmount))
+                  {Math.round(
+                    Number(item.amount) +
+                      Number(item.cgstAmount) +
+                      Number(item.utgstAmount) +
+                      Number(item.igstAmount)
                   )}
                 </td>
               </tr>
@@ -138,7 +143,7 @@ const DocumentPreview = ({
             <p>
               <b>Total Invoice Amount in Words</b>
             </p>
-            <p>{}</p>
+            <p>{amountInWords}</p>
             <p>
               <b>Bank Name:</b>
             </p>
@@ -170,12 +175,20 @@ const DocumentPreview = ({
             </ol>
           </div>
           <div className="receiver-signatures">
-            <p><b>Receiver's Signature with seal</b></p>
+            <p>
+              <b>Receiver's Signature with seal</b>
+            </p>
           </div>
           <div className="signatures">
-            <p>Certified that the particulars given above are true and correct.</p>
-            <p className="text-center"><b>For KUMAR ENTERPRISES</b></p>
-            <p className="authorized"><b>Authorized Signatory</b></p>
+            <p>
+              Certified that the particulars given above are true and correct.
+            </p>
+            <p className="text-center">
+              <b>For KUMAR ENTERPRISES</b>
+            </p>
+            <p className="authorized">
+              <b>Authorised Signatory</b>
+            </p>
           </div>
         </div>
       </div>
