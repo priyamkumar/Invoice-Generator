@@ -143,7 +143,7 @@ const DocumentPreview = ({
             <p>
               <b>Total Invoice Amount in Words</b>
             </p>
-            <p>{amountInWords}</p>
+            <p className="words">{amountInWords} {amountInWords && " Rupees only"}</p>
             <p>
               <b>Bank Name:</b>
             </p>
@@ -151,7 +151,7 @@ const DocumentPreview = ({
               <b>Bank Account Number:</b>
             </p>
             <p>
-              <b>Bank Branch IFSC:</b>{" "}
+              <b>Bank Branch IFSC:</b>
             </p>
           </div>
           <div className="totals">

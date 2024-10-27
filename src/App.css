@@ -109,7 +109,7 @@ label {
   background-color: #1a1a1a;
   margin-bottom: 10px;
   border-radius: 8px;
-  gap:10px;
+  gap: 10px;
 }
 
 .input-group {
@@ -148,9 +148,7 @@ label {
   margin-top: 10px; /* Add space above */
 }
 
-
-.client-invoice-details
-{
+.client-invoice-details {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
@@ -210,16 +208,15 @@ button:hover {
   margin-bottom: 20px;
   text-align: center;
 }
-.header p{
+.header p {
   margin-bottom: 5px;
 }
 
 .invoice-preview h2 {
-  color:#000;
+  color: #000;
 }
 
-.invoice
-{
+.invoice {
   text-align: center;
 }
 .invoice h3 {
@@ -231,21 +228,18 @@ button:hover {
   font-size: 12px;
 }
 
-.phone-email
-{
+.phone-email {
   text-align: right;
 }
 
-.header h2
-{
+.header h2 {
   margin-bottom: 15px;
 }
 .header p {
   font-size: 12px;
 }
 
-.invoice-preview .invoice-details
-{
+.invoice-preview .invoice-details {
   text-align: left;
 }
 
@@ -293,9 +287,8 @@ button:hover {
 
 .table-cell {
   word-wrap: break-word;
-  white-space: normal;  
-  max-width: 150px; 
-  min-width: 50px; 
+  white-space: normal;
+  min-width: max-content;
 }
 
 .totals p {
@@ -313,8 +306,7 @@ button:hover {
   font-weight: 700;
 }
 
-.totals-bank-details
-{
+.totals-bank-details {
   display: flex;
   justify-content: space-between;
 }
@@ -328,9 +320,8 @@ button:hover {
   justify-content: space-between;
   gap: 10px;
 }
-.terms
-{
-  width:40%;
+.terms {
+  width: 40%;
 }
 .terms p {
   text-align: center;
@@ -341,15 +332,14 @@ button:hover {
   padding-inline-start: 14px;
 }
 
- .signatures {
+.signatures {
   font-size: 10px;
- }
+}
 
-.receiver-signatures
-{
+.receiver-signatures {
   font-size: 10px;
   margin-top: 94px;
-  width:20%;
+  width: 20%;
 }
 
 .authorized {
@@ -359,4 +349,7 @@ button:hover {
 
 .text-center {
   text-align: center;
+}
+.words {
+  width: 50%;
 }

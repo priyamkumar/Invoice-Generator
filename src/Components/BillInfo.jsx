@@ -76,7 +76,7 @@ function amountToWords(amount) {
         words.push(handle_tens(digit, amount[digitIdx + 1]));
         break;
       case 2:
-        words.push(0 != digit ? " " + sglDigit[digit] + " Hundred" + (0 != amount[digitIdx + 1] && 0 != amount[digitIdx + 2] ? " and" : "") : "");
+        words.push(0 != digit ? " " + sglDigit[digit] + " Hundred" + (0 != amount[digitIdx + 1] && 0 != amount[digitIdx + 2] ? " And" : "") : "");
         break;
       case 3:
         words.push(handle_utlc(digit, nxtDigit, "Thousand"));
@@ -97,7 +97,7 @@ function amountToWords(amount) {
         words.push(handle_tens(digit, amount[digitIdx + 1]));
         break;
       case 9:
-        words.push(0 != digit ? " " + sglDigit[digit] + " Hundred" + (0 != amount[digitIdx + 1] || 0 != amount[digitIdx + 2] ? " and" : " Crore") : "")
+        words.push(0 != digit ? " " + sglDigit[digit] + " Hundred" + (0 != amount[digitIdx + 1] || 0 != amount[digitIdx + 2] ? " And" : " Crore") : "")
     }
     str = words.reverse().join("")
   } else str = "";
