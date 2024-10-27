@@ -10,7 +10,7 @@ const DocumentPreview = ({
   gst,
   totalAmount,
   totalGst,
-  amountInWords
+  amountInWords,
 }) => {
   const {
     cAddress,
@@ -37,9 +37,7 @@ const DocumentPreview = ({
     pdf.save("invoice.pdf");
   };
 
-  useEffect(() => {
-    
-  }, [totalAmount, totalGst]);
+  useEffect(() => {}, [totalAmount, totalGst]);
 
   return (
     <>
@@ -143,20 +141,31 @@ const DocumentPreview = ({
             <p>
               <b>Total Invoice Amount in Words</b>
             </p>
-            <p className="words">{amountInWords} {amountInWords && " Rupees only"}</p>
-            <p>
-              <b>Bank Name:</b>
+            <p className="words">
+              {amountInWords} {amountInWords && " Rupees only"}
             </p>
-            <p>
-              <b>Bank Account Number:</b>
+            <p className="text-center">
+              <b>Bank Details:</b>
             </p>
-            <p>
-              <b>Bank Branch IFSC:</b>
-            </p>
+            <ul>
+              <li>
+                <b>Bank Name:</b>
+              </li>
+              <li>
+                <b>Bank Account Number:</b>
+              </li>
+              <li>
+                <b>Bank Branch IFSC:</b>
+              </li>
+            </ul>
           </div>
+          <div className="gst-amount"></div>
           <div className="totals">
             <p>Total: ₹{totalAmount}</p>
-            <p>GST: ₹{totalGst}</p>
+            <p>UTGST: ₹{totalGst}</p>
+            <p>CGST: ₹{totalGst}</p>
+            <p>IGST: ₹{totalGst}</p>
+            <p>Total GST: ₹{totalGst}</p>
             <b>Grand Total: ₹{totalAmount + totalGst}</b>
           </div>
         </div>

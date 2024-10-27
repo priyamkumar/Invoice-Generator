@@ -1,7 +1,6 @@
-/* General Page Theme */
 body {
-  background-color: #000; /* Black background */
-  color: #fff; /* White text */
+  background-color: #000;
+  color: #fff;
   font-family: Arial, sans-serif;
 }
 
@@ -10,7 +9,6 @@ h2 {
   cursor: pointer;
 }
 
-/* Header */
 .header-container {
   padding: 20px;
   background-color: #1a1a1a;
@@ -47,8 +45,8 @@ input[type="phone"],
 input[type="email"],
 input[type="date"],
 textarea {
-  background-color: #4d4d4d; /* Grey background */
-  color: #fff; /* White text */
+  background-color: #4d4d4d;
+  color: #fff;
   border: 1px solid #666;
   padding: 8px;
   margin-bottom: 10px;
@@ -58,21 +56,19 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-  color: #bbb; /* Light grey placeholder */
+  color: #bbb;
 }
 
 input[readonly] {
-  background-color: #333; /* Darker background for readonly fields */
+  background-color: #333;
 }
 
-/* Labels */
 label {
   color: #fff;
   display: block;
   margin-bottom: 5px;
 }
 
-/* Card Containers */
 .card {
   background-color: #1a1a1a;
   padding: 20px;
@@ -80,7 +76,6 @@ label {
   border-radius: 8px;
 }
 
-/* Total Amount Section */
 .total-amount {
   color: #fff;
   padding: 20px;
@@ -133,19 +128,19 @@ label {
 
 .button-container {
   display: flex;
-  justify-content: flex-start; /* or flex-end/center as needed */
-  margin-top: 15px; /* Adjust margin for better spacing */
+  justify-content: flex-start;
+  margin-top: 15px;
 }
 
 #remove-btn {
-  background-color: #333; /* Adjust color as needed */
+  background-color: #333;
   color: white;
   border: none;
   padding: 8px 12px;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px; /* Add space above */
+  margin-top: 10px;
 }
 
 .client-invoice-details {
@@ -244,8 +239,7 @@ button:hover {
 }
 
 .client-info,
-.invoice-details,
-.totals {
+.invoice-details {
   margin-bottom: 20px;
 }
 
@@ -290,15 +284,22 @@ button:hover {
   white-space: normal;
   min-width: max-content;
 }
-
+.totals {
+  flex-basis: 100%;
+  text-align: end;
+}
 .totals p {
-  font-size: 18px;
-  margin-bottom: 10px;
+  margin: 2px 2px 0 3px;
   font-size: 14px;
 }
 
 .totals b {
-  font-size: 16px;
+  font-size: 14px;
+}
+.gst-amount {
+  font-size: 14px;
+  flex-basis: 100%;
+  text-align: end;
 }
 
 .terms {
@@ -309,6 +310,10 @@ button:hover {
 .totals-bank-details {
   display: flex;
   justify-content: space-between;
+}
+
+.bank-details {
+  flex-basis: 100%;
 }
 
 .bank-details p {
@@ -322,6 +327,7 @@ button:hover {
 }
 .terms {
   width: 40%;
+  padding: 8px 0 0 3px;
 }
 .terms p {
   text-align: center;
@@ -338,18 +344,26 @@ button:hover {
 
 .receiver-signatures {
   font-size: 10px;
-  margin-top: 94px;
+  margin-top: 74px;
   width: 20%;
 }
 
 .authorized {
-  margin-top: 70px !important;
+  margin-top: 50px !important;
   text-align: center;
 }
 
 .text-center {
   text-align: center;
 }
-.words {
-  width: 50%;
+
+.bank-details .words {
+  margin-bottom: 20px;
+}
+
+.bank-details ul
+{
+  margin-block-start: 0;
+  padding-inline-start: 16px;
+  font-size: 12px;
 }
