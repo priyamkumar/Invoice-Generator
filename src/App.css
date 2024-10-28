@@ -257,12 +257,14 @@ button:hover {
 .invoice-preview p {
   margin: 0;
 }
+.item-input-table {
+  padding: 15px;
+}
 
 .item-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  padding: 15px;
   table-layout: auto;
 }
 

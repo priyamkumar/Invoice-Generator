@@ -66,7 +66,7 @@ export default function ItemTable({
   }, [totalAmount, totalGst]);
   
   return (
-    <div className="item-table">
+    <div className="item-input-table">
       {items.map((item, index) => (
         <div className="item-row" key={index}>
           {/* First Row */}

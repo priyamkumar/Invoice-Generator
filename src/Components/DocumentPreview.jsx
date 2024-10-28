@@ -13,7 +13,10 @@ const DocumentPreview = ({
   amountInWords,
   totalCgst,
   totalUtgst,
-  totalIgst
+  totalIgst,
+  bankName,
+  bankAccountNumber,
+  bankBranchIfsc
 }) => {
   const {
     cAddress,
@@ -152,13 +155,13 @@ const DocumentPreview = ({
             </p>
             <ul>
               <li>
-                <b>Bank Name:</b>
+                <b>Bank Name:</b> {bankName}
               </li>
               <li>
-                <b>Bank Account Number:</b>
+                <b>Bank Account Number:</b> {bankAccountNumber}
               </li>
               <li>
-                <b>Bank Branch IFSC:</b>
+                <b>Bank Branch IFSC:</b> {bankBranchIfsc}
               </li>
             </ul>
           </div>
