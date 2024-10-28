@@ -16,9 +16,9 @@ export default function ItemTable({
     const quantity = parseFloat(newItems[index].quantity) || 1;
     const price = parseFloat(newItems[index].price) || 0;
     const cgstRate = parseFloat(newItems[index].cgst) || 0;
-    const cgstAmount = ((price * cgstRate) / 100) * quantity;
+    const cgstAmount = Math.round((price * cgstRate) / 100) * quantity;
     const utgstRate = parseFloat(newItems[index].utgst) || 0;
-    const utgstAmount = ((price * utgstRate) / 100) * quantity;
+    const utgstAmount = Math.round((price * utgstRate) / 100) * quantity;
     const igstRate = parseFloat(newItems[index].igst) || 0;
     const igstAmount = Math.round(((price * igstRate) / 100) * quantity);
     const amount = price * quantity;

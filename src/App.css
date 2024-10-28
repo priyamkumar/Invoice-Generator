@@ -269,9 +269,9 @@ button:hover {
 .item-table th,
 .item-table td {
   border: 1px solid #000;
-  padding: 8px;
+  padding: 2px;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .item-table th {

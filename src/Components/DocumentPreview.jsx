@@ -11,6 +11,9 @@ const DocumentPreview = ({
   totalAmount,
   totalGst,
   amountInWords,
+  totalCgst,
+  totalUtgst,
+  totalIgst
 }) => {
   const {
     cAddress,
@@ -112,7 +115,7 @@ const DocumentPreview = ({
                 <td className="table-cell">{item.description}</td>
                 <td className="table-cell">{item.quantity}</td>
                 <td className="table-cell">{item.unit}</td>
-                <td className="table-cell">{item.price}</td>
+                <td className="table-cell">₹{item.price}</td>
                 <td className="table-cell">
                   ₹{Math.round(item.utgstAmount)} {`(${item.utgst}%)`}
                 </td>
@@ -162,9 +165,9 @@ const DocumentPreview = ({
           <div className="gst-amount"></div>
           <div className="totals">
             <p>Total: ₹{totalAmount}</p>
-            <p>UTGST: ₹{totalGst}</p>
-            <p>CGST: ₹{totalGst}</p>
-            <p>IGST: ₹{totalGst}</p>
+            <p>UTGST: ₹{totalUtgst}</p>
+            <p>CGST: ₹{totalCgst}</p>
+            <p>IGST: ₹{totalIgst}</p>
             <p>Total GST: ₹{totalGst}</p>
             <b>Grand Total: ₹{totalAmount + totalGst}</b>
           </div>

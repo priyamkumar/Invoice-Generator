@@ -40,6 +40,9 @@ export default function BillInfo() {
 
   const totalAmount = items.reduce((acc, cur) => acc + parseFloat(cur.amount || 0), 0);
   const totalGst = items.reduce((acc, cur) => acc + parseFloat(cur.cgstAmount || 0) + parseFloat(cur.utgstAmount || 0) + parseFloat(cur.igstAmount || 0), 0);
+  const totalCgst = items.reduce((acc, cur) => acc + parseFloat(cur.cgstAmount || 0), 0);
+  const totalUtgst = items.reduce((acc, cur) => acc + parseFloat(cur.utgstAmount || 0), 0);
+  const totalIgst = items.reduce((acc, cur) => acc + parseFloat(cur.igstAmount || 0), 0);
 
   const [invoiceNumber, setInvoiceNumber] = useState(1);
   const [invoiceDate, setInvoiceDate] = useState("2024-01-01");
@@ -111,7 +114,7 @@ function amountToWords(amount) {
       <ItemTable items={items} setItems={setItems} amountInWords={amountInWords} setAmountInWords={setAmountInWords} amountToWords={amountToWords} totalAmount={totalAmount} totalGst={totalGst}/>
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <PreviewHeading />
-      <DocumentPreview items={items} details={details} date={invoiceDate} invoice={invoiceNumber} gst={gstNum} totalAmount={totalAmount} totalGst={totalGst} amountInWords={amountInWords}/>
+      <DocumentPreview items={items} details={details} date={invoiceDate} invoice={invoiceNumber} gst={gstNum} totalAmount={totalAmount} totalGst={totalGst} amountInWords={amountInWords} totalCgst={totalCgst} totalUtgst={totalUtgst} totalIgst={totalIgst}/>
     </div>
   );
 }
