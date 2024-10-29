@@ -1,8 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import PreviewHeader from "./PreviewHeader";
+import PreviewClientInfo from "./PreviewClientInfo";
+import PreviewInvoiceDetails from "./PreviewInvoiceDetails";
+import PreviewTable from "./PreviewTable";
+import PreviewBankDetails from "./PreviewBankDetails";
 
 const DocumentPreview = ({
+  docType,
   items,
   details,
   date,
@@ -16,7 +22,7 @@ const DocumentPreview = ({
   totalIgst,
   bankName,
   bankAccountNumber,
-  bankBranchIfsc
+  bankBranchIfsc,
 }) => {
   const {
     cAddress,
@@ -49,123 +55,29 @@ const DocumentPreview = ({
     <>
       <div className="invoice-preview" ref={printRef}>
         <div className="invoice">
-          <h3>INVOICE</h3>
+          <h3>{docType.toUpperCase()}</h3>
           <p>Input Tax Credit is available on this Invoice</p>
         </div>
-        <div className="header">
-          <h2>KUMAR ENTERPRISES</h2>
-          <p>
-            <b>
-              Deals in: Stationery, Printing, Computer Consumable, Photostat,
-              Consumable, Electricals, Electronics & Crockery
-              <br />
-              Also Deals In: Furniture, Woodwork, Aluminum Work, Sanitary Work &
-              AC Service
-              <br />
-              Govt. Contractors & General Order Suppliers
-            </b>
-          </p>
-          <p>
-            <b>S.C.O. NO. 1001-03, 2nd FLOOR, SECTOR 22-B, CHANDIGARH</b>
-          </p>
-          <p>
-            <b>Phone: 0172-3068479, Mobile: 98151-96606</b>
-          </p>
-          <p>
-            <b>GSTIN: 04AHKPK6845Q1ZN</b>
-          </p>
-        </div>
+        <PreviewHeader />
+
         <div className="client-invoice-details">
-          <div className="client-info">
-            <p>
-              <b>Bill To</b>
-            </p>
-            <p>M/s {clientName}</p>
-            <p>{clientAddress}</p>
-            <p>GSTIN: {gst}</p>
-          </div>
+          <PreviewClientInfo
+            clientName={clientName}
+            clientAddress={clientAddress}
+            gst={gst}
+          />
 
-          <div className="invoice-details">
-            <p>
-              <b>Invoice Details</b>
-            </p>
-            <p>No. : {invoice}</p>
-            <p>Date : {date}</p>
-          </div>
+          <PreviewInvoiceDetails invoice={invoice} date={date} />
         </div>
+        <PreviewTable items={items} />
 
-        <table className="item-table">
-          <thead>
-            <tr>
-              <th>Sr. No.</th>
-              <th>HSN Code</th>
-              <th>Particulars</th>
-              <th>QTY.</th>
-              <th>Unit</th>
-              <th>Rate</th>
-              <th>UTGST</th>
-              <th>CGST</th>
-              <th>IGST</th>
-              <th>Amount Before Tax</th>
-              <th>Included Tax</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, index) => (
-              <tr key={index}>
-                <td className="table-cell">{item.serial}</td>
-                <td className="table-cell">{item.hsn}</td>
-                <td className="table-cell">{item.description}</td>
-                <td className="table-cell">{item.quantity}</td>
-                <td className="table-cell">{item.unit}</td>
-                <td className="table-cell">₹{item.price}</td>
-                <td className="table-cell">
-                  ₹{Math.round(item.utgstAmount)} {`(${item.utgst}%)`}
-                </td>
-                <td className="table-cell">
-                  ₹{Math.round(item.cgstAmount)} {`(${item.cgst}%)`}
-                </td>
-                <td className="table-cell">
-                  ₹{Math.round(item.igstAmount)} {`(${item.igst}%)`}
-                </td>
-                <td className="table-cell">₹{Math.round(item.amount)}</td>
-                <td className="table-cell">
-                  ₹
-                  {Math.round(
-                    Number(item.amount) +
-                      Number(item.cgstAmount) +
-                      Number(item.utgstAmount) +
-                      Number(item.igstAmount)
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
         <div className="totals-bank-details">
-          <div className="bank-details">
-            <p>
-              <b>Total Invoice Amount in Words</b>
-            </p>
-            <p className="words">
-              {amountInWords} {amountInWords && " Rupees only"}
-            </p>
-            <p className="text-center">
-              <b>Bank Details:</b>
-            </p>
-            <ul>
-              <li>
-                <b>Bank Name:</b> {bankName}
-              </li>
-              <li>
-                <b>Bank Account Number:</b> {bankAccountNumber}
-              </li>
-              <li>
-                <b>Bank Branch IFSC:</b> {bankBranchIfsc}
-              </li>
-            </ul>
-          </div>
-          <div className="gst-amount"></div>
+          <PreviewBankDetails
+            amountInWords={amountInWords}
+            bankName={bankName}
+            bankAccountNumber={bankAccountNumber}
+            bankBranchIfsc={bankBranchIfsc}
+          />
           <div className="totals">
             <p>Total: ₹{totalAmount}</p>
             <p>UTGST: ₹{totalUtgst}</p>

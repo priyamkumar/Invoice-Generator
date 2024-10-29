@@ -63,6 +63,13 @@ input[readonly] {
   background-color: #333;
 }
 
+.invoice-or-quotation
+{
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
 label {
   color: #fff;
   display: block;
@@ -179,7 +186,7 @@ button:hover {
   text-align: center;
 }
 
-.date-invoice-gst {
+.date-invoice-gst, .bank-input-details {
   padding: 20px;
 }
 
@@ -298,11 +305,7 @@ button:hover {
 .totals b {
   font-size: 14px;
 }
-.gst-amount {
-  font-size: 14px;
-  flex-basis: 100%;
-  text-align: end;
-}
+
 
 .terms {
   font-size: 12px;
@@ -315,7 +318,7 @@ button:hover {
 }
 
 .bank-details {
-  flex-basis: 100%;
+  width:50%;
 }
 
 .bank-details p {

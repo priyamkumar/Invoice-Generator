@@ -8,6 +8,8 @@ import DocumentPreview from "./DocumentPreview";
 import BankDetails from "./BankDetails";
 
 export default function BillInfo() {
+  const [docType, setDocType] = useState("invoice");
+
   const [items, setItems] = useState([
     {
       serial: 1,
@@ -73,7 +75,6 @@ export default function BillInfo() {
   const [bankBranchIfsc, setBankBranchIfsc] = useState([]);
 
   const [invoices, setInvoices] = useState([]);
-
 
   // Main function to get the amount in words
   function amountToWords(amount) {
@@ -192,7 +193,11 @@ export default function BillInfo() {
   }
   return (
     <div className="invoice-details">
-      <InvoiceDetails details={details} setDetails={setDetails} />
+      <InvoiceDetails
+        details={details}
+        setDetails={setDetails}
+        setDocType={setDocType}
+      />
       <DateInvoiceGST
         date={[invoiceDate, setInvoiceDate]}
         invoice={[invoiceNumber, setInvoiceNumber]}
@@ -208,9 +213,14 @@ export default function BillInfo() {
         totalGst={totalGst}
       />
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
-      <BankDetails bname={[bankName, setBankName]} number={[bankAccountNumber, setBankAccountNumber]} ifsc={[bankBranchIfsc, setBankBranchIfsc]}/>
+      <BankDetails
+        bname={[bankName, setBankName]}
+        number={[bankAccountNumber, setBankAccountNumber]}
+        ifsc={[bankBranchIfsc, setBankBranchIfsc]}
+      />
       <PreviewHeading />
       <DocumentPreview
+        docType={docType}
         items={items}
         details={details}
         date={invoiceDate}
