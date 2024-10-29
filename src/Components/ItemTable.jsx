@@ -29,6 +29,7 @@ export default function ItemTable({
     newItems[index].amount = amount;
 
     setItems(newItems);
+    localStorage.setItem("items",JSON.stringify(items));
   };
 
   const addRow = () => {
@@ -50,7 +51,28 @@ export default function ItemTable({
         amount: 0,
       },
     ]);
+    localStorage.setItem("items",JSON.stringify(items));
   };
+
+  const clearItems = () => {
+    setItems([{
+      serial: 1,
+      hsn: "",
+      description: "",
+      quantity: 1,
+      unit: "",
+      price: 0,
+      cgst: "",
+      cgstAmount: 0,
+      utgst: "",
+      utgstAmount: 0,
+      igst: "",
+      igstAmount: 0,
+      amount: 0,
+    }]);
+    localStorage.removeItem("items");
+  }
+
   const removeRow = (index) => {
     const newItems = [...items];
     newItems.splice(index, 1);
@@ -231,6 +253,9 @@ export default function ItemTable({
           Add Item
         </button>
       )}
+      <button type="button" id="add-btn" onClick={clearItems}>
+          Clear Items
+        </button>
     </div>
   );
 }

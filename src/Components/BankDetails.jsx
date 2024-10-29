@@ -21,7 +21,7 @@ export default function BankDetails({bname, number, ifsc}) {
         }
       };
   return (
-    <div className="">
+    <div className="bank-input-details">
       <div className="bank-name">
         <label htmlFor="bank-name">Bank Name: </label>
         <input
