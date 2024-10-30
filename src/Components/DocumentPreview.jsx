@@ -6,6 +6,11 @@ import PreviewClientInfo from "./PreviewClientInfo";
 import PreviewInvoiceDetails from "./PreviewInvoiceDetails";
 import PreviewTable from "./PreviewTable";
 import PreviewBankDetails from "./PreviewBankDetails";
+import PreviewTotals from "./PreviewTotals";
+import PreviewTerms from "./PreviewTerms";
+import PreviewReceiverSignature from "./PreviewReceiverSignature";
+import PreviewSignature from "./PreviewSignature";
+import PreviewTitle from "./PreviewTitle";
 
 const DocumentPreview = ({
   docType,
@@ -54,12 +59,8 @@ const DocumentPreview = ({
   return (
     <>
       <div className="invoice-preview" ref={printRef}>
-        <div className="invoice">
-          <h3>{docType.toUpperCase()}</h3>
-          <p>Input Tax Credit is available on this Invoice</p>
-        </div>
+        <PreviewTitle docType={docType} />
         <PreviewHeader />
-
         <div className="client-invoice-details">
           <PreviewClientInfo
             clientName={clientName}
@@ -78,45 +79,18 @@ const DocumentPreview = ({
             bankAccountNumber={bankAccountNumber}
             bankBranchIfsc={bankBranchIfsc}
           />
-          <div className="totals">
-            <p>Total: ₹{totalAmount}</p>
-            <p>UTGST: ₹{totalUtgst}</p>
-            <p>CGST: ₹{totalCgst}</p>
-            <p>IGST: ₹{totalIgst}</p>
-            <p>Total GST: ₹{totalGst}</p>
-            <b>Grand Total: ₹{totalAmount + totalGst}</b>
-          </div>
+          <PreviewTotals
+            totalAmount={totalAmount}
+            totalUtgst={totalUtgst}
+            totalCgst={totalCgst}
+            totalIgst={totalIgst}
+            totalGst={totalGst}
+          />
         </div>
         <div className="terms-signatures">
-          <div className="terms">
-            <p>
-              <b>Terms and Conditions:</b>
-            </p>
-            <ol>
-              <li>Goods once accepted will not be taken back.</li>
-              <li>
-                If payment is not made within 15 days, Interest @ 24% will be
-                charged extra.
-              </li>
-              <li>All disputes subject to Chandigarh Jurisdiction.</li>
-            </ol>
-          </div>
-          <div className="receiver-signatures">
-            <p>
-              <b>Receiver's Signature with seal</b>
-            </p>
-          </div>
-          <div className="signatures">
-            <p>
-              Certified that the particulars given above are true and correct.
-            </p>
-            <p className="text-center">
-              <b>For KUMAR ENTERPRISES</b>
-            </p>
-            <p className="authorized">
-              <b>Authorised Signatory</b>
-            </p>
-          </div>
+          <PreviewTerms />
+          <PreviewReceiverSignature />
+          <PreviewSignature />
         </div>
       </div>
       <div className="btn-div">
