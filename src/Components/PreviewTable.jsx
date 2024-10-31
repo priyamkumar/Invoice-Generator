@@ -1,13 +1,12 @@
 import React from 'react'
 
 export default function PreviewTable({items}) {
-    console.log(items)
   return (
     <table className="item-table">
           <thead>
             <tr>
               <th>Sr. No.</th>
-              <th>HSN Code</th>
+              <th>HSN<br/>Code</th>
               <th>Particulars</th>
               <th>QTY.</th>
               <th>Unit</th>
@@ -15,8 +14,8 @@ export default function PreviewTable({items}) {
               <th>UTGST</th>
               <th>CGST</th>
               <th>IGST</th>
-              <th>Amount Before Tax</th>
-              <th>Included Tax</th>
+              <th>Amount<br/>Before Tax</th>
+              <th>Included<br/>Tax</th>
             </tr>
           </thead>
           <tbody>
