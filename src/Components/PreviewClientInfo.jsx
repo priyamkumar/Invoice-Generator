@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PreviewClientInfo({clientName, clientAddress, gst}) {
+export default function PreviewClientInfo({clientName, clientAddress, clientGst}) {
   return (
     <div className="client-info">
             <p>
@@ -8,7 +8,7 @@ export default function PreviewClientInfo({clientName, clientAddress, gst}) {
             </p>
             <p>M/s {clientName}</p>
             <p>{clientAddress}</p>
-            <p>GSTIN: {gst}</p>
+            <p>GSTIN: {clientGst}</p>
           </div>
   )
 }

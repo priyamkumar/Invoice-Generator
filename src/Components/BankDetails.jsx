@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function BankDetails({bname, number, ifsc}) {
     const [bankName, setBankName] = bname;
     const [bankAccountNumber, setBankAccountNumber] = number;

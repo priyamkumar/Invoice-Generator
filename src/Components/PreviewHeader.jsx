@@ -1,27 +1,19 @@
 
-export default function PreviewHeader() {
+export default function PreviewHeader({cName, cAddress, cPhone, cEmail, gst}) {
   return (
     <div className="header">
-          <h2>KUMAR ENTERPRISES</h2>
+          <h2>{cName}</h2>
           <p>
-            <b>
-              Deals in: Stationery, Printing, Computer Consumable, Photostat,
-              Consumable, Electricals, Electronics & Crockery
-              <br />
-              Also Deals In: Furniture, Woodwork, Aluminum Work, Sanitary Work &
-              AC Service
-              <br />
-              Govt. Contractors & General Order Suppliers
-            </b>
+            <b>{cAddress}</b>
           </p>
           <p>
-            <b>S.C.O. NO. 1001-03, 2nd FLOOR, SECTOR 22-B, CHANDIGARH</b>
+            <b>Phone No. : {cPhone}</b>
           </p>
           <p>
-            <b>Phone: 0172-3068479, Mobile: 98151-96606</b>
+            <b>Email : {cEmail}</b>
           </p>
           <p>
-            <b>GSTIN: 04AHKPK6845Q1ZN</b>
+            <b>GSTIN : {gst}</b>
           </p>
         </div>
   )

@@ -13,7 +13,6 @@ import PreviewSignature from "./PreviewSignature";
 import PreviewTitle from "./PreviewTitle";
 
 const DocumentPreview = ({
-  docType,
   items,
   details,
   date,
@@ -38,6 +37,7 @@ const DocumentPreview = ({
     clientEmail,
     clientName,
     clientPhone,
+    clientGst
   } = details;
   const printRef = useRef();
   const handleDownloadPdf = async () => {
@@ -59,14 +59,20 @@ const DocumentPreview = ({
   return (
     <>
       <div className="invoice-preview" ref={printRef}>
-        <PreviewTitle docType={docType} />
-        <PreviewHeader />
+        <PreviewTitle />
+        <PreviewHeader
+          cName={cName}
+          cAddress={cAddress}
+          cEmail={cEmail}
+          cPhone={cPhone}
+          gst={gst}
+        />
         <div className="client-invoice-details">
           <PreviewClientInfo
             clientName={clientName}
             clientAddress={clientAddress}
-            gst={gst}
-          />
+            clientGst={clientGst}
+            />
 
           <PreviewInvoiceDetails invoice={invoice} date={date} />
         </div>
@@ -90,7 +96,7 @@ const DocumentPreview = ({
         <div className="terms-signatures">
           <PreviewTerms />
           <PreviewReceiverSignature />
-          <PreviewSignature />
+          <PreviewSignature cName={cName}/>
         </div>
       </div>
       <div className="btn-div">

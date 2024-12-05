@@ -8,7 +8,6 @@ import DocumentPreview from "./DocumentPreview";
 import BankDetails from "./BankDetails";
 
 export default function BillInfo() {
-  const [docType, setDocType] = useState("invoice");
 
   const [items, setItems] = useState([
     {
@@ -37,6 +36,7 @@ export default function BillInfo() {
     clientAddress: "",
     clientPhone: "",
     clientEmail: "",
+    clientGst: ""
   });
 
   const [amountInWords, setAmountInWords] = useState("");
@@ -76,7 +76,6 @@ export default function BillInfo() {
 
   const [invoices, setInvoices] = useState([]);
 
-  // Main function to get the amount in words
   function amountToWords(amount) {
     var sglDigit = [
         "Zero",
@@ -194,9 +193,7 @@ export default function BillInfo() {
   return (
     <div className="invoice-details">
       <InvoiceDetails
-        details={details}
         setDetails={setDetails}
-        setDocType={setDocType}
       />
       <DateInvoiceGST
         date={[invoiceDate, setInvoiceDate]}
@@ -220,7 +217,6 @@ export default function BillInfo() {
       />
       <PreviewHeading />
       <DocumentPreview
-        docType={docType}
         items={items}
         details={details}
         date={invoiceDate}
