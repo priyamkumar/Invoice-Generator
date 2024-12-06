@@ -8,7 +8,6 @@ import DocumentPreview from "./DocumentPreview";
 import BankDetails from "./BankDetails";
 
 export default function BillInfo() {
-
   const [items, setItems] = useState([
     {
       serial: 1,
@@ -28,7 +27,7 @@ export default function BillInfo() {
   ]);
 
   const [details, setDetails] = useState({
-    cName: "",
+    cName: "Company Name",
     cAddress: "",
     cPhone: "",
     cEmail: "",
@@ -36,7 +35,7 @@ export default function BillInfo() {
     clientAddress: "",
     clientPhone: "",
     clientEmail: "",
-    clientGst: ""
+    clientGst: "",
   });
 
   const [amountInWords, setAmountInWords] = useState("");
@@ -66,8 +65,10 @@ export default function BillInfo() {
     0
   );
 
+  let today = new Date().toISOString().split("T")[0];
+
   const [invoiceNumber, setInvoiceNumber] = useState(1);
-  const [invoiceDate, setInvoiceDate] = useState("2024-01-01");
+  const [invoiceDate, setInvoiceDate] = useState(today);
   const [gstNum, setGstNum] = useState();
 
   const [bankName, setBankName] = useState([]);
@@ -192,10 +193,9 @@ export default function BillInfo() {
   }
   return (
     <div className="invoice-details">
-      <InvoiceDetails
-        setDetails={setDetails}
-      />
+      <InvoiceDetails setDetails={setDetails} />
       <DateInvoiceGST
+        today={today}
         date={[invoiceDate, setInvoiceDate]}
         invoice={[invoiceNumber, setInvoiceNumber]}
         gst={[gstNum, setGstNum]}

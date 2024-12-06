@@ -232,7 +232,7 @@ export default function ItemTable({
             />
           </div>
           <div className="input-group">
-            <label>Total Invoice Amount in words</label>
+            <label>Total Amount in words</label>
             <input
               type="text"
               name="amount"
@@ -243,7 +243,7 @@ export default function ItemTable({
           </div>
 
           <div className="button-container">
-            <button onClick={() => removeRow(index)}>Remove</button>
+            <button className="remove-btn" onClick={() => removeRow(index)}>Remove</button>
           </div>
         </div>
       ))}

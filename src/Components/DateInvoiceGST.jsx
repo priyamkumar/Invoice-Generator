@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DateInvoiceGST({ date, invoice, gst }) {
+export default function DateInvoiceGST({ date, invoice, gst, today }) {
   const [billDate, setDate] = date;
   const [billNumber, setInvoice] = invoice;
   const [gstNumber, setGst] = gst;
@@ -42,6 +42,7 @@ export default function DateInvoiceGST({ date, invoice, gst }) {
           name="date"
           placeholder="Date"
           min="01-01-2024"
+          max={today}
           value={billDate}
           onChange={handleChange}
         />

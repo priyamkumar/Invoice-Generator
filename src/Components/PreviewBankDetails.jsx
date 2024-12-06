@@ -3,9 +3,7 @@ import React from 'react'
 export default function PreviewBankDetails({amountInWords, bankName, bankAccountNumber, bankBranchIfsc}) {
   return (
     <div className="bank-details">
-            <p>
-              <b>Total Invoice Amount in Words</b>
-            </p>
+            
             <p className="words">
               {amountInWords} {amountInWords && " Rupees only"}
             </p>

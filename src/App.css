@@ -6,7 +6,6 @@ body {
 
 h2 {
   color: #fff;
-  cursor: pointer;
 }
 
 .header-container {
@@ -69,78 +68,16 @@ label {
   margin-bottom: 5px;
 }
 
-.card {
-  background-color: #1a1a1a;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-
-.total-amount {
-  color: #fff;
-  padding: 20px;
-  background-color: #1a1a1a;
-  border-radius: 8px;
-  text-align: right;
-  padding-right: 40px;
-}
-
-.total-amount p {
-  margin: 5px 0;
-}
-
-.total-amount span {
-  margin-left: 50px;
-}
-
-.total-amount b {
-  font-size: 18px;
-}
-
-.item-row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  background-color: #1a1a1a;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  gap: 15px;
-}
-
 .input-group {
-  width: calc(48% - 10px);
   margin-right: 10px;
   margin-bottom: 10px;
-}
-
-.input-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
 }
 
 .button-container {
   display: flex;
-  justify-content: flex-start;
   margin-top: 15px;
-}
-
-#remove-btn {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
 }
 
 .client-invoice-details {
@@ -158,28 +95,38 @@ button {
   margin-top: 10px;
 }
 
+.remove-btn {
+  height: 30px;
+  align-self: center;
+  border: none;
+  background-color: #1a1a1a;
+  color: fff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
 button:hover {
   background-color: #555;
 }
 
-.preview-heading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+.message {
+  color: red;
 }
 
-.preview-heading a {
-  text-decoration: none;
-  color: #fff;
+.preview-heading {
+  text-align: center;
 }
 
 .btn-div {
   text-align: center;
 }
 
-.date-invoice-gst, .bank-input-details {
+.date-invoice-gst,
+.bank-input-details {
   padding: 20px;
 }
 
@@ -257,9 +204,6 @@ button:hover {
 .invoice-preview p {
   margin: 0;
 }
-.item-input-table {
-  padding: 15px;
-}
 
 .item-table {
   width: 100%;
@@ -299,7 +243,6 @@ button:hover {
   font-size: 14px;
 }
 
-
 .terms {
   font-size: 12px;
   font-weight: 700;
@@ -311,7 +254,7 @@ button:hover {
 }
 
 .bank-details {
-  width:50%;
+  width: 50%;
 }
 
 .bank-details p {
@@ -359,9 +302,289 @@ button:hover {
   margin-bottom: 20px;
 }
 
-.bank-details ul
-{
+.bank-details ul {
   margin-block-start: 0;
   padding-inline-start: 16px;
   font-size: 12px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card label {
+  align-self: start;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.card input,
+.card textarea {
+  align-self: center;
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.card input:focus,
+.card textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+@media (max-width: 600px) {
+  .header-container h2 {
+    font-size: 18px;
+  }
+
+  .navbar ul li {
+    font-size: 12px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .date-invoice-gst {
+    flex-direction: column;
+  }
+
+  .item-table th {
+    font-size: 8px;
+  }
+}
+
+.date-invoice-gst {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.date-invoice-gst > div {
+  flex: 1;
+  text-align: center;
+}
+
+.date-invoice-gst label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.date-invoice-gst input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.date-invoice-gst input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.item-input-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #fff;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.input-group label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.input-group input {
+  border: 1.5px solid #fff;
+  width: 80%;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.input-group input:read-only {
+  background-color: #1a1a1a;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1200px) {
+  .item-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .item-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+.total-amount {
+  background-color: #1a1a1a;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 15px;
+  max-width: 300px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.total-amount p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+.total-amount p span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.total-amount b {
+  display: block;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #fff;
+  text-align: right;
+  font-size: 18px;
+  color: #fff;
+}
+
+.total-amount b span {
+  color: #fff;
+  margin-left: 10px;
+}
+
+
+.bank-input-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+}
+
+.bank-input-details > div {
+  margin-bottom: 15px;
+}
+
+.bank-input-details label {
+  display: block;
+  margin: 10px 0;
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+}
+
+.bank-input-details input {
+  width: 80%;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+
+}
+
+.bank-input-details input:focus {
+  outline: none;
+  border-color: #3498db;
+
+}
+
+.bank-input-details input::placeholder {
+  color: #fff;
+}
+
+
+@media screen and (max-width: 768px) {
+  .invoice-preview {
+    padding: 10px;
+  }
+
+  .item-table {
+    font-size: 12px;
+  }
+
+  .item-table th, .item-table td {
+    padding: 4px;
+  }
+
+  .item-table {
+    overflow-x: auto;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .invoice-preview {
+    padding: 5px;
+  }
+
+  .header h2, .client-info h3, .invoice-details h3 {
+    font-size: 16px;
+  }
+
+  .header p, .client-info p, .invoice-details p {
+    font-size: 12px;
+  }
+
+  .item-table {
+    font-size: 10px;
+  }
+
+  .item-table th, .item-table td {
+    padding: 2px;
+  }
+
+  .totals {
+    font-size: 12px;
+  }
+
+  .btn-div button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
 }
