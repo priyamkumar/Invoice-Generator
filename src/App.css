@@ -14,6 +14,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 0 15px;
 }
 
 .header-container h2 {
@@ -352,39 +353,18 @@ button:hover {
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
-@media (max-width: 600px) {
-  .header-container h2 {
-    font-size: 18px;
-  }
-
-  .navbar ul li {
-    font-size: 12px;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-
-  .date-invoice-gst {
-    flex-direction: column;
-  }
-
-  .item-table th {
-    font-size: 8px;
-  }
-}
-
 .date-invoice-gst {
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 15px auto;
+  background-color: #1a1a1a;
+  border-radius: 8px;
 }
 
 .date-invoice-gst > div {
   flex: 1;
-  text-align: center;
 }
 
 .date-invoice-gst label {
@@ -399,7 +379,6 @@ button:hover {
   padding: 10px;
   border: 1px solid #fff;
   border-radius: 4px;
-  text-align: center;
   transition: border-color 0.3s ease;
 }
 
@@ -446,26 +425,13 @@ button:hover {
   cursor: not-allowed;
 }
 
-@media (max-width: 1200px) {
-  .item-row {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .item-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
 .total-amount {
   background-color: #1a1a1a;
   border: 1px solid #fff;
   border-radius: 8px;
   padding: 15px;
-  max-width: 300px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin: 20px auto;
   font-family: Arial, sans-serif;
 }
 
@@ -539,7 +505,8 @@ button:hover {
 }
 
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
+
   .invoice-preview {
     padding: 10px;
   }
@@ -556,12 +523,14 @@ button:hover {
     overflow-x: auto;
     display: block;
   }
+
+  .item-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
 }
 
-@media screen and (max-width: 480px) {
-  .invoice-preview {
-    padding: 5px;
-  }
+@media(max-width: 480px) {
 
   .header h2, .client-info h3, .invoice-details h3 {
     font-size: 16px;
@@ -579,8 +548,24 @@ button:hover {
     padding: 2px;
   }
 
-  .totals {
-    font-size: 12px;
+  .bank-details p, .bank-details b {
+    font-size: 10px;
+  }
+
+  .totals p, .totals b{
+    font-size: 10px;
+  }
+
+  .terms b, .terms li{
+    font-size: 10px;
+  }
+
+  .receiver-signatures b {
+    font-size: 10px;
+  }
+
+  .signatures b, .signatures p {
+    font-size: 10px;
   }
 
   .btn-div button {
@@ -588,3 +573,27 @@ button:hover {
     font-size: 14px;
   }
 }
+
+@media (max-width: 600px) {
+  .header-container h2 {
+    font-size: 18px;
+  }
+
+  .navbar ul li {
+    font-size: 12px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .date-invoice-gst {
+    flex-direction: column;
+  }
+
+  .item-table th {
+    font-size: 8px;
+  }
+  .bank-input-details {
+    flex-direction: column;
+}}
