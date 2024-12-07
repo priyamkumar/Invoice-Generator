@@ -39,6 +39,7 @@ export default function DateInvoiceGST({ date, invoice, gst, today }) {
         <input
           type="date"
           id="date"
+          // style={{colorScheme: isDark ? "dark" : ""}}
           name="date"
           placeholder="Date"
           min="01-01-2024"
