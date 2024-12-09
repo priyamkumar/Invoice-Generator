@@ -5,6 +5,7 @@ import App from './App.jsx'
 import Error from './Components/Error.jsx';
 import Settings from './Components/Settings.jsx';
 import MainSection from './Components/MainSection.jsx';
+import Invoices from './Components/Invoices.jsx';
 
 const root = createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/invoices",
-        element: <MainSection />
+        element: <Invoices />
       },
       {
         path: "/settings",

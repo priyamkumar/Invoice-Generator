@@ -8,7 +8,7 @@ import DocumentPreview from "./DocumentPreview";
 import BankDetails from "./BankDetails";
 
 export default function BillInfo() {
-  const [items, setItems] = useState([
+  const [items, setItems] = useState( JSON.parse(localStorage.getItem("items")) || [
     {
       serial: 1,
       hsn: "",

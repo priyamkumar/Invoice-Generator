@@ -41,7 +41,7 @@ h2 {
   padding-bottom: 20px;
 }
 
-.header-container.dark, .main.dark, .settings.dark {
+.header-container.dark, .main.dark, .settings.dark, .all-invoices.dark {
   --background-color: #1a1a1a;
   --color: #fff;
   --read-color: #534d4d;
@@ -91,7 +91,7 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--color);
+  color: #9f9f9f;
 }
 
 label {
@@ -130,9 +130,9 @@ button {
 
 .remove-btn {
   height: 35px;
-  align-self: center;
+  align-self: auto;
   font-size: 14px;
-  background-color: rgb(218, 37, 37);
+  background-color: rgb(225, 0, 0);
 }
 
 button:hover {
@@ -142,7 +142,6 @@ button:hover {
 .remove-btn:hover {
   background-color: rgb(144, 1, 1);
 }
-
 
 .message {
   color: red;
@@ -359,7 +358,7 @@ button:hover {
   flex: 1;
   background: var(--background-color);
   border-radius: 8px;
-  padding: 30px;
+  padding: 15px 30px 15px;
 }
 
 .card label {
@@ -393,7 +392,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   max-width: 600px;
-  margin: 15px auto;
+  margin: 0 auto 15px;
   background-color: var(--background-color);
   border-radius: 8px;
 }
@@ -534,13 +533,20 @@ button:hover {
 }
 
 .bank-input-details input::placeholder {
-  color: #fff;
+  color: #9f9f9f;
+  ;
 }
 
 .settings {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--background-color);
+  color: var(--color);
+  height: calc(100vh - 70px);
+}
+
+.all-invoices {
   background-color: var(--background-color);
   color: var(--color);
   height: calc(100vh - 70px);

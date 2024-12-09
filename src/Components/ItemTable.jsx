@@ -33,7 +33,7 @@ export default function ItemTable({
   };
 
   const addRow = () => {
-    setItems([
+    let newItems = [
       ...items,
       {
         serial: items.length + 1,
@@ -50,8 +50,9 @@ export default function ItemTable({
         igstAmount: 0,
         amount: 0,
       },
-    ]);
-    localStorage.setItem("items",JSON.stringify(items));
+    ];
+    setItems(newItems);
+    localStorage.setItem("items",JSON.stringify(newItems));
   };
 
   const clearItems = () => {
@@ -81,6 +82,7 @@ export default function ItemTable({
       serial: idx + 1,
     }));
     setItems(updatedItems);
+    localStorage.setItem("items",JSON.stringify(updatedItems));
   };
 
   useEffect(() => {
@@ -91,7 +93,6 @@ export default function ItemTable({
     <div className="item-input-table">
       {items.map((item, index) => (
         <div className="item-row" key={index}>
-          {/* First Row */}
           <div className="input-group">
             <label>S. No.</label>
             <input
@@ -157,7 +158,6 @@ export default function ItemTable({
             />
           </div>
 
-          {/* Second Row */}
           <div className="input-group">
             <label>CGST (%)</label>
             <input
@@ -166,7 +166,7 @@ export default function ItemTable({
               value={item.cgst}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
-              placeholder="CGST %"
+              placeholder="%"
             />
           </div>
           <div className="input-group">
@@ -187,7 +187,7 @@ export default function ItemTable({
               value={item.utgst}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
-              placeholder="UTGST %"
+              placeholder="%"
             />
           </div>
           <div className="input-group">
@@ -208,7 +208,7 @@ export default function ItemTable({
               value={item.igst}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
-              placeholder="IGST %"
+              placeholder="%"
             />
           </div>
           <div className="input-group">
@@ -231,16 +231,7 @@ export default function ItemTable({
               placeholder="Amount"
             />
           </div>
-          <div className="input-group">
-            <label>Total Amount in words</label>
-            <input
-              type="text"
-              name="amount"
-              value={amountInWords}
-              readOnly
-              placeholder="Amount"
-            />
-          </div>
+          
 
           <div className="button-container">
             <button className="remove-btn" onClick={() => removeRow(index)}>Remove</button>

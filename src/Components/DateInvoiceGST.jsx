@@ -1,9 +1,11 @@
 import React from "react";
+import { useTheme } from "../Contexts/ThemeContext";
 
 export default function DateInvoiceGST({ date, invoice, gst, today }) {
   const [billDate, setDate] = date;
   const [billNumber, setInvoice] = invoice;
   const [gstNumber, setGst] = gst;
+  const {isDark} = useTheme();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +41,7 @@ export default function DateInvoiceGST({ date, invoice, gst, today }) {
         <input
           type="date"
           id="date"
-          // style={{colorScheme: isDark ? "dark" : ""}}
+          style={{colorScheme: isDark ? "dark" : ""}}
           name="date"
           placeholder="Date"
           min="01-01-2024"
