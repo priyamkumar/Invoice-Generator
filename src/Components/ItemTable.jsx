@@ -94,10 +94,11 @@ export default function ItemTable({
       {items.map((item, index) => (
         <div className="item-row" key={index}>
           <div className="input-group">
-            <label>S. No.</label>
+            <label htmlFor={`serial${index}`}>S. No.</label>
             <input
               type="number"
               name="serial"
+              id={`serial${index}`}
               value={item.serial}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
@@ -105,10 +106,11 @@ export default function ItemTable({
             />
           </div>
           <div className="input-group">
-            <label>HSN Code</label>
+            <label htmlFor={`hsn${index}`}>HSN Code</label>
             <input
               type="text"
               name="hsn"
+              id={`hsn${index}`}
               value={item.hsn}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
@@ -116,20 +118,22 @@ export default function ItemTable({
             />
           </div>
           <div className="input-group">
-            <label>Description</label>
+            <label htmlFor={`description${index}`}>Description</label>
             <input
               type="text"
               name="description"
+              id={`description${index}`}
               value={item.description}
               onChange={(e) => handleInputChange(index, e)}
               placeholder="Item description"
             />
           </div>
           <div className="input-group">
-            <label>Quantity</label>
+            <label htmlFor={`quantity${index}`}>Quantity</label>
             <input
               type="number"
               name="quantity"
+              id={`quantity${index}`}
               value={item.quantity}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
@@ -137,20 +141,22 @@ export default function ItemTable({
             />
           </div>
           <div className="input-group">
-            <label>Unit</label>
+            <label htmlFor={`unit${index}`}>Unit</label>
             <input
               type="text"
               name="unit"
+              id={`unit${index}`}
               value={item.unit}
               onChange={(e) => handleInputChange(index, e)}
               placeholder="Unit"
             />
           </div>
           <div className="input-group">
-            <label>Price</label>
+            <label htmlFor={`price${index}`}>Price</label>
             <input
               type="number"
               name="price"
+              id={`price${index}`}
               value={item.price}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
@@ -159,10 +165,11 @@ export default function ItemTable({
           </div>
 
           <div className="input-group">
-            <label>CGST (%)</label>
+            <label htmlFor={`cgst${index}`}>CGST (%)</label>
             <input
               type="number"
               name="cgst"
+              id={`cgst${index}`}
               value={item.cgst}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
@@ -170,20 +177,22 @@ export default function ItemTable({
             />
           </div>
           <div className="input-group">
-            <label>CGST Amount</label>
+            <label htmlFor={`cgstAmount${index}`}>CGST Amount</label>
             <input
               type="text"
               name="cgstAmount"
+              id={`cgstAmount${index}`}
               value={item.cgstAmount}
               readOnly
               placeholder="CGST Amount"
             />
           </div>
           <div className="input-group">
-            <label>UTGST (%)</label>
+            <label htmlFor={`utgst${index}`}>UTGST (%)</label>
             <input
               type="number"
               name="utgst"
+              id={`utgst${index}`}
               value={item.utgst}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
@@ -191,20 +200,22 @@ export default function ItemTable({
             />
           </div>
           <div className="input-group">
-            <label>UTGST Amount</label>
+            <label htmlFor={`utgstAmount${index}`}>UTGST Amount</label>
             <input
               type="text"
               name="utgstAmount"
+              id={`utgstAmount${index}`}
               value={item.utgstAmount}
               readOnly
               placeholder="UTGST Amount"
             />
           </div>
           <div className="input-group">
-            <label>IGST (%)</label>
+            <label htmlFor={`igst${index}`}>IGST (%)</label>
             <input
               type="number"
               name="igst"
+              id={`igst${index}`}
               value={item.igst}
               min="0"
               onChange={(e) => handleInputChange(index, e)}
@@ -212,20 +223,22 @@ export default function ItemTable({
             />
           </div>
           <div className="input-group">
-            <label>IGST Amount</label>
+            <label htmlFor={`igstAmount${index}`}>IGST Amount</label>
             <input
               type="text"
               name="igstAmount"
+              id={`igstAmount${index}`}
               value={item.igstAmount}
               readOnly
               placeholder="IGST Amount"
             />
           </div>
           <div className="input-group">
-            <label>Total Amount</label>
+            <label htmlFor={`amount${index}`}>Total Amount</label>
             <input
               type="text"
               name="amount"
+              id={`amount${index}`}
               value={item.amount}
               readOnly
               placeholder="Amount"
@@ -244,7 +257,7 @@ export default function ItemTable({
           Add Item
         </button>
       )}
-      <button type="button" id="add-btn" onClick={clearItems}>
+      <button type="button" id="clear-btn" onClick={clearItems}>
           Clear Items
         </button>
     </div>

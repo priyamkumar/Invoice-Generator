@@ -1,27 +1,32 @@
-export default function BankDetails({bname, number, ifsc}) {
-    const [bankName, setBankName] = bname;
-    const [bankAccountNumber, setBankAccountNumber] = number;
-    const [bankBranchIfsc, setBankBranchIfsc] = ifsc;
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        switch (name) {
-          case "bank-name":
-            setBankName(value);
-            break;
-          case "bank-account-number":
-            setBankAccountNumber(value);
-            break;
-          case "bank-branch-ifsc":
-            setBankBranchIfsc(value);
-            break;
-          default:
-            break;
-        }
-      };
+export default function BankDetails({ bankDetailsArr }) {
+  const [bankDetails, setBankDetails] = bankDetailsArr;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "bank-name":
+        setBankDetails((prev) => ({
+          ...prev, bankName: value
+        }));
+        break;
+      case "bank-account-number":
+        setBankDetails((prev) => ({
+          ...prev, bankAccountNumber: value
+        }));
+        break;
+      case "bank-branch-ifsc":
+        setBankDetails((prev) => ({
+          ...prev, bankBranchIfsc: value
+        }));
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <div className="bank-input-details">
       <div className="bank-name">
-        <label htmlFor="bank-name">Bank Name: </label>
+        <label htmlFor="bank-name">Bank Name </label>
         <input
           type="text"
           id="bank-name"
@@ -31,9 +36,9 @@ export default function BankDetails({bname, number, ifsc}) {
         />
       </div>
       <div className="bank-number">
-        <label htmlFor="bank-account-number">Bank Account Number: </label>
+        <label htmlFor="bank-account-number">Bank Account Number </label>
         <input
-          type="text"
+          type="number"
           id="bank-account-number"
           name="bank-account-number"
           placeholder="Bank Account Number"
@@ -41,7 +46,7 @@ export default function BankDetails({bname, number, ifsc}) {
         />
       </div>
       <div className="bank-branch-ifsc">
-        <label htmlFor="bank-branch-ifsc">Bank Branch IFSC: </label>
+        <label htmlFor="bank-branch-ifsc">Bank Branch IFSC </label>
         <input
           type="text"
           id="bank-branch-ifsc"
@@ -51,5 +56,5 @@ export default function BankDetails({bname, number, ifsc}) {
         />
       </div>
     </div>
-  )
+  );
 }

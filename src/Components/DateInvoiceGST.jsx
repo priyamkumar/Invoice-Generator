@@ -26,7 +26,7 @@ export default function DateInvoiceGST({ date, invoice, gst, today }) {
   return (
     <div className="date-invoice-gst">
       <div className="number">
-        <label htmlFor="invoice-number">Invoice Number: </label>
+        <label htmlFor="invoice-number">Invoice Number </label>
         <input
           type="number"
           id="invoice-number"
@@ -37,7 +37,7 @@ export default function DateInvoiceGST({ date, invoice, gst, today }) {
         />
       </div>
       <div className="date">
-        <label htmlFor="date">Invoice Date: </label>
+        <label htmlFor="date">Invoice Date </label>
         <input
           type="date"
           id="date"
@@ -51,7 +51,7 @@ export default function DateInvoiceGST({ date, invoice, gst, today }) {
         />
       </div>
       <div className="gst-no">
-        <label htmlFor="gst-no">GSTIN: </label>
+        <label htmlFor="gst-no">GSTIN </label>
         <input
           type="text"
           id="gst-no"

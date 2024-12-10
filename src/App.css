@@ -121,7 +121,7 @@ label {
 button {
   background-color: #0463f3;
   color: #fff;
-  border: 1px solid var(--color);
+  border: 1px solid var(--read-color);
   padding: 8px 12px;
   cursor: pointer;
   margin-top: 10px;
@@ -162,6 +162,10 @@ button:hover {
 }
 
 #add-btn {
+  margin: 10px;
+}
+
+#clear-btn {
   margin: 10px;
 }
 
@@ -498,6 +502,12 @@ button:hover {
   margin-left: 10px;
 }
 
+.save {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
 .bank-input-details {
   display: flex;
   justify-content: center;
@@ -550,6 +560,12 @@ button:hover {
   background-color: var(--background-color);
   color: var(--color);
   height: calc(100vh - 70px);
+  text-align: center;
+}
+
+.all-invoices h2 {
+  margin: 0 0 40px;
+  padding: 30px;
 }
 
 @media (max-width: 768px) {

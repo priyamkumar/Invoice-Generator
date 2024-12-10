@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PreviewBankDetails({amountInWords, bankName, bankAccountNumber, bankBranchIfsc}) {
+export default function PreviewBankDetails({amountInWords, bankDetailsArr, bankName, bankAccountNumber, bankBranchIfsc}) {
   return (
     <div className="bank-details">
             

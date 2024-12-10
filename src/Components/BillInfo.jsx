@@ -6,25 +6,28 @@ import TotalAmount from "./TotalAmount";
 import PreviewHeading from "./PreviewHeading";
 import DocumentPreview from "./DocumentPreview";
 import BankDetails from "./BankDetails";
+import SaveInvoice from "./SaveInvoice";
 
 export default function BillInfo() {
-  const [items, setItems] = useState( JSON.parse(localStorage.getItem("items")) || [
-    {
-      serial: 1,
-      hsn: "",
-      description: "",
-      quantity: 1,
-      unit: "",
-      price: 0,
-      cgst: "",
-      cgstAmount: 0,
-      utgst: "",
-      utgstAmount: 0,
-      igst: "",
-      igstAmount: 0,
-      amount: 0,
-    },
-  ]);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("items")) || [
+      {
+        serial: 1,
+        hsn: "",
+        description: "",
+        quantity: 1,
+        unit: "",
+        price: 0,
+        cgst: "",
+        cgstAmount: 0,
+        utgst: "",
+        utgstAmount: 0,
+        igst: "",
+        igstAmount: 0,
+        amount: 0,
+      },
+    ]
+  );
 
   const [details, setDetails] = useState({
     cName: "Company Name",
@@ -39,6 +42,23 @@ export default function BillInfo() {
   });
 
   const [amountInWords, setAmountInWords] = useState("");
+
+  let today = new Date().toISOString().split("T")[0];
+
+  const [invoiceNumber, setInvoiceNumber] = useState(1);
+  const [invoiceDate, setInvoiceDate] = useState(today);
+  const [gstNum, setGstNum] = useState();
+
+  const [bankDetails, setBankDetails] = useState({
+    bankName: "",
+    bankAccountNumber: 0,
+    bankBranchIfsc: "",
+  });
+  const [bankName, setBankName] = useState([]);
+  const [bankAccountNumber, setBankAccountNumber] = useState([]);
+  const [bankBranchIfsc, setBankBranchIfsc] = useState([]);
+
+  const [invoices, setInvoices] = useState([]);
 
   const totalAmount = items.reduce(
     (acc, cur) => acc + parseFloat(cur.amount || 0),
@@ -64,18 +84,6 @@ export default function BillInfo() {
     (acc, cur) => acc + parseFloat(cur.igstAmount || 0),
     0
   );
-
-  let today = new Date().toISOString().split("T")[0];
-
-  const [invoiceNumber, setInvoiceNumber] = useState(1);
-  const [invoiceDate, setInvoiceDate] = useState(today);
-  const [gstNum, setGstNum] = useState();
-
-  const [bankName, setBankName] = useState([]);
-  const [bankAccountNumber, setBankAccountNumber] = useState([]);
-  const [bankBranchIfsc, setBankBranchIfsc] = useState([]);
-
-  const [invoices, setInvoices] = useState([]);
 
   function amountToWords(amount) {
     var sglDigit = [
@@ -210,11 +218,8 @@ export default function BillInfo() {
         totalGst={totalGst}
       />
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
-      <BankDetails
-        bname={[bankName, setBankName]}
-        number={[bankAccountNumber, setBankAccountNumber]}
-        ifsc={[bankBranchIfsc, setBankBranchIfsc]}
-      />
+      <BankDetails bankDetailsArr={[bankDetails, setBankDetails]} />
+      <SaveInvoice />
       <PreviewHeading />
       <DocumentPreview
         items={items}
@@ -228,6 +233,7 @@ export default function BillInfo() {
         totalCgst={totalCgst}
         totalUtgst={totalUtgst}
         totalIgst={totalIgst}
+        bankDetails={[bankDetails, setBankDetails]}
         bankName={bankName}
         bankAccountNumber={bankAccountNumber}
         bankBranchIfsc={bankBranchIfsc}

@@ -24,6 +24,7 @@ const DocumentPreview = ({
   totalCgst,
   totalUtgst,
   totalIgst,
+  bankDetailsArr,
   bankName,
   bankAccountNumber,
   bankBranchIfsc,
@@ -81,6 +82,7 @@ const DocumentPreview = ({
         <div className="totals-bank-details">
           <PreviewBankDetails
             amountInWords={amountInWords}
+            bankDetailsArr={bankDetailsArr}
             bankName={bankName}
             bankAccountNumber={bankAccountNumber}
             bankBranchIfsc={bankBranchIfsc}
