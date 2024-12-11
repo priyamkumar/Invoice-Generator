@@ -82,7 +82,7 @@ input[type="date"],
 textarea {
   background-color: var(--background-color);
   color: var(--color);
-  border: 1px solid var(--color);
+  border: 1px solid var(--read-color);
   padding: 8px;
   margin-bottom: 10px;
   width: 100%;
@@ -379,7 +379,7 @@ button:hover {
   width: 95%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid var(--color);
+  border: 1px solid var(--read-color);
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }
@@ -416,7 +416,7 @@ button:hover {
 .date-invoice-gst input {
   width: 80%;
   padding: 10px;
-  border: 1px solid var(--color);
+  border: 1px solid var(--read-color);
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }
@@ -437,7 +437,7 @@ button:hover {
   grid-template-columns: repeat(7, 1fr);
   gap: 15px;
   margin-bottom: 20px;
-  border: 1px solid var(--color);
+  border: 1px solid var(--read-color);
   padding: 15px;
   border-radius: 6px;
 }
@@ -449,7 +449,7 @@ button:hover {
 }
 
 .input-group input {
-  border: 1.5px solid var(--color);
+  border: 1.5px solid var(--read-color);
   width: 80%;
   border-radius: 5px;
   transition: border-color 0.3s ease;
@@ -502,9 +502,10 @@ button:hover {
   margin-left: 10px;
 }
 
-.save {
+.save-and-new {
   display: flex;
   justify-content: center;
+  gap: 10px;
   padding-bottom: 30px;
 }
 
@@ -532,7 +533,7 @@ button:hover {
 
 .bank-input-details input {
   width: 80%;
-  border: 1px solid var(--color);
+  border: 1px solid var(--read-color);
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }

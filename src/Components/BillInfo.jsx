@@ -29,7 +29,7 @@ export default function BillInfo() {
     ]
   );
 
-  const [details, setDetails] = useState({
+  const [details, setDetails] = useState(JSON.parse(localStorage.getItem("details")) || {
     cName: "Company Name",
     cAddress: "",
     cPhone: "",
@@ -45,18 +45,17 @@ export default function BillInfo() {
 
   let today = new Date().toISOString().split("T")[0];
 
-  const [invoiceNumber, setInvoiceNumber] = useState(1);
-  const [invoiceDate, setInvoiceDate] = useState(today);
-  const [gstNum, setGstNum] = useState();
+  const [invoiceDetails, setInvoiceDetails] = useState({
+    invoiceNumber: 1,
+    invoiceDate: today,
+    gstNum: "",
+  });
 
   const [bankDetails, setBankDetails] = useState({
     bankName: "",
     bankAccountNumber: 0,
     bankBranchIfsc: "",
   });
-  const [bankName, setBankName] = useState([]);
-  const [bankAccountNumber, setBankAccountNumber] = useState([]);
-  const [bankBranchIfsc, setBankBranchIfsc] = useState([]);
 
   const [invoices, setInvoices] = useState([]);
 
@@ -201,12 +200,11 @@ export default function BillInfo() {
   }
   return (
     <div className="invoice-details">
-      <InvoiceDetails setDetails={setDetails} />
+      <InvoiceDetails detailsArr={[details, setDetails]} />
       <DateInvoiceGST
         today={today}
-        date={[invoiceDate, setInvoiceDate]}
-        invoice={[invoiceNumber, setInvoiceNumber]}
-        gst={[gstNum, setGstNum]}
+        invoiceDetailsArr={[invoiceDetails, setInvoiceDetails]}
+        
       />
       <ItemTable
         items={items}
@@ -219,24 +217,19 @@ export default function BillInfo() {
       />
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <BankDetails bankDetailsArr={[bankDetails, setBankDetails]} />
-      <SaveInvoice />
+      <SaveInvoice setInfo={[setItems, setDetails]}/>
       <PreviewHeading />
       <DocumentPreview
         items={items}
         details={details}
-        date={invoiceDate}
-        invoice={invoiceNumber}
-        gst={gstNum}
+        invoiceDetails={invoiceDetails}
         totalAmount={totalAmount}
         totalGst={totalGst}
         amountInWords={amountInWords}
         totalCgst={totalCgst}
         totalUtgst={totalUtgst}
         totalIgst={totalIgst}
-        bankDetails={[bankDetails, setBankDetails]}
-        bankName={bankName}
-        bankAccountNumber={bankAccountNumber}
-        bankBranchIfsc={bankBranchIfsc}
+        bankDetailsArr={[bankDetails, setBankDetails]}
       />
     </div>
   );

@@ -1,5 +1,6 @@
 
-export default function PreviewHeader({cName, cAddress, cPhone, cEmail, gst}) {
+export default function PreviewHeader({companyDetails}) {
+  const [cName, cAddress, cEmail, cPhone, gst] = companyDetails;
   return (
     <div className="header">
           <h2>{cName}</h2>

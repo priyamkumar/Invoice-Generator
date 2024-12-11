@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function PreviewInvoiceDetails({invoice, date}) {
+export default function PreviewInvoiceDetails({invoiceDetails}) {
+  const [invoice, date] = invoiceDetails;
   return (
     <div className="invoice-details">
     <p>

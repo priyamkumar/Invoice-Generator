@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function PreviewClientInfo({clientName, clientAddress, clientGst}) {
+export default function PreviewClientInfo({clientData}) {
+  const [clientName, clientAddress, clientGst] = clientData;
   return (
     <div className="client-info">
             <p>

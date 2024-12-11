@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function PreviewBankDetails({amountInWords, bankDetailsArr, bankName, bankAccountNumber, bankBranchIfsc}) {
+  const [bankDetails, setBankDetails] = bankDetailsArr;
   return (
     <div className="bank-details">
             
@@ -12,13 +13,13 @@ export default function PreviewBankDetails({amountInWords, bankDetailsArr, bankN
             </p>
             <ul>
               <li>
-                <b>Bank Name:</b> {bankName}
+                <b>Bank Name:</b> {bankDetails.bankName}
               </li>
               <li>
-                <b>Bank Account Number:</b> {bankAccountNumber}
+                <b>Bank Account Number:</b> {bankDetails.bankAccountNumber ? bankDetails.bankAccountNumber : ""}
               </li>
               <li>
-                <b>Bank Branch IFSC:</b> {bankBranchIfsc}
+                <b>Bank Branch IFSC:</b> {bankDetails.bankBranchIfsc}
               </li>
             </ul>
           </div>

@@ -15,9 +15,7 @@ import PreviewTitle from "./PreviewTitle";
 const DocumentPreview = ({
   items,
   details,
-  date,
-  invoice,
-  gst,
+  invoiceDetails,
   totalAmount,
   totalGst,
   amountInWords,
@@ -25,9 +23,6 @@ const DocumentPreview = ({
   totalUtgst,
   totalIgst,
   bankDetailsArr,
-  bankName,
-  bankAccountNumber,
-  bankBranchIfsc,
 }) => {
   const {
     cAddress,
@@ -38,7 +33,7 @@ const DocumentPreview = ({
     clientEmail,
     clientName,
     clientPhone,
-    clientGst
+    clientGst,
   } = details;
   const printRef = useRef();
   const handleDownloadPdf = async () => {
@@ -62,43 +57,28 @@ const DocumentPreview = ({
       <div className="invoice-preview" ref={printRef}>
         <PreviewTitle />
         <PreviewHeader
-          cName={cName}
-          cAddress={cAddress}
-          cEmail={cEmail}
-          cPhone={cPhone}
-          gst={gst}
+          companyDetails={[cName, cAddress, cEmail, cPhone, invoiceDetails.gstNum]}
         />
         <div className="client-invoice-details">
           <PreviewClientInfo
-            clientName={clientName}
-            clientAddress={clientAddress}
-            clientGst={clientGst}
-            />
-
-          <PreviewInvoiceDetails invoice={invoice} date={date} />
+            clientData={[clientName, clientAddress, clientGst]}
+          />
+          <PreviewInvoiceDetails invoiceDetails={[invoiceDetails.invoiceNumber, invoiceDetails.invoiceDate]} />
         </div>
         <PreviewTable items={items} />
-
         <div className="totals-bank-details">
           <PreviewBankDetails
             amountInWords={amountInWords}
             bankDetailsArr={bankDetailsArr}
-            bankName={bankName}
-            bankAccountNumber={bankAccountNumber}
-            bankBranchIfsc={bankBranchIfsc}
           />
           <PreviewTotals
-            totalAmount={totalAmount}
-            totalUtgst={totalUtgst}
-            totalCgst={totalCgst}
-            totalIgst={totalIgst}
-            totalGst={totalGst}
+            totals={[totalAmount, totalUtgst, totalCgst, totalIgst, totalGst]}
           />
         </div>
         <div className="terms-signatures">
           <PreviewTerms />
           <PreviewReceiverSignature />
-          <PreviewSignature cName={cName}/>
+          <PreviewSignature cName={cName} />
         </div>
       </div>
       <div className="btn-div">

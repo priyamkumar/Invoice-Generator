@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function PreviewTotals({totalAmount, totalUtgst, totalCgst, totalIgst, totalGst}) {
+export default function PreviewTotals({totals}) {
+  const [totalAmount, totalUtgst, totalCgst, totalIgst, totalGst] = totals;
   return (
     <div className="totals">
             <p>Total Amount: ₹{totalAmount}</p>

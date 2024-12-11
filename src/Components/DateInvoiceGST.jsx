@@ -1,23 +1,23 @@
 import React from "react";
 import { useTheme } from "../Contexts/ThemeContext";
 
-export default function DateInvoiceGST({ date, invoice, gst, today }) {
-  const [billDate, setDate] = date;
-  const [billNumber, setInvoice] = invoice;
-  const [gstNumber, setGst] = gst;
+export default function DateInvoiceGST({ invoiceDetailsArr, today }) {
   const {isDark} = useTheme();
+
+  const [invoiceDetails, setInvoiceDetails] = invoiceDetailsArr;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
       case "date":
-        setDate(value);
+        setInvoiceDetails((prev) => ({...prev, invoiceDate: value}))
         break;
       case "invoice-number":
-        setInvoice(value);
+        setInvoiceDetails((prev) => ({...prev, invoiceNumber: value}))
+        
         break;
       case "gstNumber":
-        setGst(value);
+        setInvoiceDetails((prev) => ({...prev, gstNum: value}))
         break;
       default:
         break;
@@ -34,6 +34,7 @@ export default function DateInvoiceGST({ date, invoice, gst, today }) {
           min="0"
           name="invoice-number"
           onChange={handleChange}
+          value={invoiceDetails.invoiceNumber}
         />
       </div>
       <div className="date">
@@ -46,7 +47,7 @@ export default function DateInvoiceGST({ date, invoice, gst, today }) {
           placeholder="Date"
           min="01-01-2024"
           max={today}
-          value={billDate}
+          value={invoiceDetails.invoiceDate}
           onChange={handleChange}
         />
       </div>

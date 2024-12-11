@@ -1,9 +1,10 @@
-export default function InvoiceDetails({ setDetails }) {
+export default function InvoiceDetails({ detailsArr }) {
+  const [details, setDetails] = detailsArr;
   const handleDetails = (e) => {
     const { name, value } = e.target;
-    setDetails((prev) => {
-      return { ...prev, [name]: value };
-    });
+    let newDetails = {...details, [name]: value}
+    setDetails(newDetails);
+    localStorage.setItem("details", JSON.stringify(newDetails));
   };
 
   return (
@@ -14,6 +15,7 @@ export default function InvoiceDetails({ setDetails }) {
           type="text"
           id="com-Name"
           name="cName"
+          value={details.cName}
           placeholder="Company Name"
           onChange={handleDetails}
         />
@@ -23,6 +25,7 @@ export default function InvoiceDetails({ setDetails }) {
           placeholder="Company Address"
           rows="3"
           cols="20"
+          value={details.cAddress}
           name="cAddress"
           onChange={handleDetails}
         ></textarea>
@@ -31,6 +34,7 @@ export default function InvoiceDetails({ setDetails }) {
           type="phone"
           id="phone"
           placeholder="Phone"
+          value={details.cPhone}
           name="cPhone"
           onChange={handleDetails}
         />
@@ -39,6 +43,7 @@ export default function InvoiceDetails({ setDetails }) {
           type="email"
           id="email"
           placeholder="Email"
+          value={details.cEmail}
           name="cEmail"
           onChange={handleDetails}
         />
@@ -51,6 +56,7 @@ export default function InvoiceDetails({ setDetails }) {
           id="cli-Name"
           placeholder="Client Name"
           name="clientName"
+          value={details.clientName}
           onChange={handleDetails}
         />
         <label htmlFor="cli-address">Address </label>
@@ -60,6 +66,7 @@ export default function InvoiceDetails({ setDetails }) {
           rows="3"
           cols="20"
           name="clientAddress"
+          value={details.clientAddress}
           onChange={handleDetails}
         ></textarea>
         <label htmlFor="cli-Gst">Client GST Number </label>
@@ -68,6 +75,7 @@ export default function InvoiceDetails({ setDetails }) {
           id="cli-Gst"
           placeholder="Client GST Number"
           name="clientGst"
+          value={details.clientGst}
           onChange={handleDetails}
         />
       </div>
