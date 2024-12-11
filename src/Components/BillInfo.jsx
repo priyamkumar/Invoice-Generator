@@ -29,17 +29,19 @@ export default function BillInfo() {
     ]
   );
 
-  const [details, setDetails] = useState(JSON.parse(localStorage.getItem("details")) || {
-    cName: "Company Name",
-    cAddress: "",
-    cPhone: "",
-    cEmail: "",
-    clientName: "",
-    clientAddress: "",
-    clientPhone: "",
-    clientEmail: "",
-    clientGst: "",
-  });
+  const [details, setDetails] = useState(
+    JSON.parse(localStorage.getItem("details")) || {
+      cName: "Company Name",
+      cAddress: "",
+      cPhone: "",
+      cEmail: "",
+      clientName: "",
+      clientAddress: "",
+      clientPhone: "",
+      clientEmail: "",
+      clientGst: "",
+    }
+  );
 
   const [amountInWords, setAmountInWords] = useState("");
 
@@ -204,7 +206,6 @@ export default function BillInfo() {
       <DateInvoiceGST
         today={today}
         invoiceDetailsArr={[invoiceDetails, setInvoiceDetails]}
-        
       />
       <ItemTable
         items={items}
@@ -217,7 +218,7 @@ export default function BillInfo() {
       />
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <BankDetails bankDetailsArr={[bankDetails, setBankDetails]} />
-      <SaveInvoice setInfo={[setItems, setDetails]}/>
+      <SaveInvoice setInfo={[setItems, setDetails]} info={[items, details, invoiceDetails, bankDetails]}/>
       <PreviewHeading />
       <DocumentPreview
         items={items}

@@ -1,9 +1,10 @@
 import React from "react";
 
-export default function SaveInvoice({setInfo}) {
+export default function SaveInvoice({setInfo, info}) {
   const [setItems, setDetails] = setInfo;
+  const [items, details, invoiceDetails, bankDetails] = info;
     const handleSave = () => {
-        localStorage.setItem("invoices", JSON.stringify(""))
+        localStorage.setItem("invoices", JSON.stringify([items, details, invoiceDetails, bankDetails]))
     }
 
     const handleNew = () => {
