@@ -1,9 +1,10 @@
 import React from "react";
 
-export default function SaveInvoice({ invoicesArr, setInfo, info }) {
+export default function SaveInvoice({ invoicesArr, setInfo, info, totalAmount, totalGst }) {
   const [invoices, setInvoices] = invoicesArr;
   const [setItems, setDetails] = setInfo;
   const [items, details, invoiceDetails, bankDetails] = info;
+  const total = totalAmount + totalGst;
   const handleSave = () => {
     if (!invoices.includes(invoiceDetails.invoiceNumber)) {
       let updateInvoices = [...invoices, invoiceDetails.invoiceNumber];
@@ -12,7 +13,7 @@ export default function SaveInvoice({ invoicesArr, setInfo, info }) {
     }
     localStorage.setItem(
       invoiceDetails.invoiceNumber,
-      JSON.stringify([...items, ...details, ...invoiceDetails, ...bankDetails])
+      JSON.stringify([...items, details, invoiceDetails, bankDetails, total])
     );
   };
 

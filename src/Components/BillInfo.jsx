@@ -59,7 +59,7 @@ export default function BillInfo() {
     bankBranchIfsc: "",
   });
 
-  const [invoices, setInvoices] = useState([]);
+  const [invoices, setInvoices] = useState(JSON.parse(localStorage.getItem("invoices")) || []);
 
   const totalAmount = items.reduce(
     (acc, cur) => acc + parseFloat(cur.amount || 0),
@@ -218,7 +218,13 @@ export default function BillInfo() {
       />
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <BankDetails bankDetailsArr={[bankDetails, setBankDetails]} />
-      <SaveInvoice invoicesArr={[invoices, setInvoices]} setInfo={[setItems, setDetails]} info={[items, details, invoiceDetails, bankDetails]}/>
+      <SaveInvoice
+        invoicesArr={[invoices, setInvoices]}
+        setInfo={[setItems, setDetails]}
+        info={[items, details, invoiceDetails, bankDetails]}
+        totalAmount={totalAmount}
+        totalGst={totalGst}
+      />
       <PreviewHeading />
       <DocumentPreview
         items={items}

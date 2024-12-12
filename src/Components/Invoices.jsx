@@ -4,35 +4,39 @@ import { useTheme } from "../Contexts/ThemeContext";
 export default function Invoices() {
   const { isDark } = useTheme();
   const invoices = JSON.parse(localStorage.getItem("invoices"));
+  let invoiceData = [];
+  console.log(invoices);
   if (invoices) {
-    const invoiceData = invoices.map((el) =>
-      JSON.parse(localStorage.getItem(el))
-    );
+    invoiceData = invoices.map((el) => JSON.parse(localStorage.getItem(el)));
   }
+  console.log(invoiceData);
   return (
     <div className={`all-invoices ${isDark ? "dark" : ""}`}>
       <h2>Saved Invoices</h2>
       {!invoices || invoices.length === 0 ? (
         <p>No invoices saved yet.</p>
       ) : (
-        <ul>
+        <ol>
           {invoiceData.map((invoice, index) => (
             <li key={invoice.id || index} className="invoice-item">
-              <div className="invoice-details">
-                <p>
-                  <strong>Invoice ID:</strong> {invoice.id}
-                </p>
-                <p>
-                  <strong>Date:</strong> {invoice.date}
-                </p>
-                <p>
-                  <strong>Amount:</strong> {invoice.amount}
-                </p>
+              <div className="all-invoice-details">
+                <div className="all-invoices-data">
+                  <p>
+                    <strong>Invoice Number:</strong> {invoice[2].invoiceNumber}
+                  </p>
+                  <p>
+                    <strong>Date:</strong> {invoice[2].invoiceDate}
+                  </p>
+                  <p>
+                    <strong>Amount:</strong> {invoice[4]}
+                  </p>
+                </div>
+                  <button onClick={() => console.log("click")}>Edit</button>
+                  <button onClick={() => console.log("click")}>Delete</button>
               </div>
-              <button onClick={() => console.log("click")}>View</button>
             </li>
           ))}
-        </ul>
+        </ol>
       )}
     </div>
   );
