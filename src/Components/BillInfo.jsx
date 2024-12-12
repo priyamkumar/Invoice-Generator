@@ -218,7 +218,7 @@ export default function BillInfo() {
       />
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <BankDetails bankDetailsArr={[bankDetails, setBankDetails]} />
-      <SaveInvoice setInfo={[setItems, setDetails]} info={[items, details, invoiceDetails, bankDetails]}/>
+      <SaveInvoice invoicesArr={[invoices, setInvoices]} setInfo={[setItems, setDetails]} info={[items, details, invoiceDetails, bankDetails]}/>
       <PreviewHeading />
       <DocumentPreview
         items={items}

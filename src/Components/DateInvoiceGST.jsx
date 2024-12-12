@@ -13,7 +13,7 @@ export default function DateInvoiceGST({ invoiceDetailsArr, today }) {
         setInvoiceDetails((prev) => ({...prev, invoiceDate: value}))
         break;
       case "invoice-number":
-        setInvoiceDetails((prev) => ({...prev, invoiceNumber: value}))
+        setInvoiceDetails((prev) => ({...prev, invoiceNumber: Number(value)}))
         
         break;
       case "gstNumber":
