@@ -1,23 +1,20 @@
 import React from "react";
 import { useTheme } from "../Contexts/ThemeContext";
+import { useInvoice } from "../Contexts/InvoiceContext";
 
 export default function Invoices() {
   const { isDark } = useTheme();
-  const invoices = JSON.parse(localStorage.getItem("invoices"));
-  let invoiceData = [];
-  if (invoices) {
-    invoiceData = invoices.map((el) => JSON.parse(localStorage.getItem(el)));
-  }
-  console.log(invoices)
+  const { invoices, setInvoices } = useInvoice();
+
+  let invoiceData = invoices.map((el) => JSON.parse(localStorage.getItem(el)));
 
   const handleDelete = (index) => {
     let deletedInvoice = invoices.filter((_, id) => id === index);
-    console.log(deletedInvoice);
     let invoicesLeft = invoices.filter((_, id) => id !== index);
-    console.log(invoicesLeft);
-    localStorage.removeItem("invoices", JSON.stringify(invoicesLeft));
+    setInvoices(invoicesLeft);
+    localStorage.removeItem(deletedInvoice);
     localStorage.setItem("invoices", JSON.stringify(invoicesLeft));
-  }
+  };
   return (
     <div className={`all-invoices ${isDark ? "dark" : ""}`}>
       <h2>Saved Invoices</h2>
@@ -39,8 +36,8 @@ export default function Invoices() {
                     <strong>Amount:</strong> {invoice[4]}
                   </p>
                 </div>
-                  <button onClick={() => console.log("click")}>Edit</button>
-                  <button onClick={() => handleDelete(index)}>Delete</button>
+                <button onClick={() => console.log("click")}>Edit</button>
+                <button onClick={() => handleDelete(index)}>Delete</button>
               </div>
             </li>
           ))}

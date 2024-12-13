@@ -7,6 +7,7 @@ import PreviewHeading from "./PreviewHeading";
 import DocumentPreview from "./DocumentPreview";
 import BankDetails from "./BankDetails";
 import SaveInvoice from "./SaveInvoice";
+import { useInvoice } from "../Contexts/InvoiceContext";
 
 export default function BillInfo() {
   const [items, setItems] = useState(
@@ -42,13 +43,15 @@ export default function BillInfo() {
       clientGst: "",
     }
   );
-
+  
   const [amountInWords, setAmountInWords] = useState("");
-
+  
   let today = new Date().toISOString().split("T")[0];
-
+  
+  const {invoices, setInvoices} = useInvoice();
+  
   const [invoiceDetails, setInvoiceDetails] = useState(JSON.parse(localStorage.getItem("invoiceDetails")) || {
-    invoiceNumber: 1,
+    invoiceNumber: invoices.length + 1,
     invoiceDate: today,
     gstNum: "",
   });
@@ -59,7 +62,6 @@ export default function BillInfo() {
     bankBranchIfsc: "",
   });
 
-  const [invoices, setInvoices] = useState(JSON.parse(localStorage.getItem("invoices")) || []);
 
   const totalAmount = items.reduce(
     (acc, cur) => acc + parseFloat(cur.amount || 0),
