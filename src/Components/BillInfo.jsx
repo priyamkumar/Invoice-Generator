@@ -47,13 +47,13 @@ export default function BillInfo() {
 
   let today = new Date().toISOString().split("T")[0];
 
-  const [invoiceDetails, setInvoiceDetails] = useState({
+  const [invoiceDetails, setInvoiceDetails] = useState(JSON.parse(localStorage.getItem("invoiceDetails")) || {
     invoiceNumber: 1,
     invoiceDate: today,
     gstNum: "",
   });
 
-  const [bankDetails, setBankDetails] = useState({
+  const [bankDetails, setBankDetails] = useState(JSON.parse(localStorage.getItem("bankDetails")) || {
     bankName: "",
     bankAccountNumber: 0,
     bankBranchIfsc: "",
@@ -220,7 +220,7 @@ export default function BillInfo() {
       <BankDetails bankDetailsArr={[bankDetails, setBankDetails]} />
       <SaveInvoice
         invoicesArr={[invoices, setInvoices]}
-        setInfo={[setItems, setDetails]}
+        setInfo={[setItems, setDetails, setInvoiceDetails, setBankDetails]}
         info={[items, details, invoiceDetails, bankDetails]}
         totalAmount={totalAmount}
         totalGst={totalGst}

@@ -8,20 +8,9 @@ export default function DateInvoiceGST({ invoiceDetailsArr, today }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    switch (name) {
-      case "date":
-        setInvoiceDetails((prev) => ({...prev, invoiceDate: value}))
-        break;
-      case "invoice-number":
-        setInvoiceDetails((prev) => ({...prev, invoiceNumber: Number(value)}))
-        
-        break;
-      case "gstNumber":
-        setInvoiceDetails((prev) => ({...prev, gstNum: value}))
-        break;
-      default:
-        break;
-    }
+    let newInvoiceDetails = {...invoiceDetails, [name]: value}
+    setInvoiceDetails(newInvoiceDetails);
+    localStorage.setItem("invoiceDetails", JSON.stringify(newInvoiceDetails));
   };
   return (
     <div className="date-invoice-gst">
@@ -32,7 +21,7 @@ export default function DateInvoiceGST({ invoiceDetailsArr, today }) {
           id="invoice-number"
           placeholder="Invoice Number"
           min="0"
-          name="invoice-number"
+          name="invoiceNumber"
           onChange={handleChange}
           value={invoiceDetails.invoiceNumber}
         />
@@ -43,7 +32,7 @@ export default function DateInvoiceGST({ invoiceDetailsArr, today }) {
           type="date"
           id="date"
           style={{colorScheme: isDark ? "dark" : ""}}
-          name="date"
+          name="invoiceDate"
           placeholder="Date"
           min="01-01-2024"
           max={today}
@@ -56,8 +45,9 @@ export default function DateInvoiceGST({ invoiceDetailsArr, today }) {
         <input
           type="text"
           id="gst-no"
-          name="gstNumber"
+          name="gstNum"
           placeholder="GST Number"
+          value={invoiceDetails.gstNum}
           onChange={handleChange}
         />
       </div>

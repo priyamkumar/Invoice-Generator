@@ -5,11 +5,19 @@ export default function Invoices() {
   const { isDark } = useTheme();
   const invoices = JSON.parse(localStorage.getItem("invoices"));
   let invoiceData = [];
-  console.log(invoices);
   if (invoices) {
     invoiceData = invoices.map((el) => JSON.parse(localStorage.getItem(el)));
   }
-  console.log(invoiceData);
+  console.log(invoices)
+
+  const handleDelete = (index) => {
+    let deletedInvoice = invoices.filter((_, id) => id === index);
+    console.log(deletedInvoice);
+    let invoicesLeft = invoices.filter((_, id) => id !== index);
+    console.log(invoicesLeft);
+    localStorage.removeItem("invoices", JSON.stringify(invoicesLeft));
+    localStorage.setItem("invoices", JSON.stringify(invoicesLeft));
+  }
   return (
     <div className={`all-invoices ${isDark ? "dark" : ""}`}>
       <h2>Saved Invoices</h2>
@@ -32,7 +40,7 @@ export default function Invoices() {
                   </p>
                 </div>
                   <button onClick={() => console.log("click")}>Edit</button>
-                  <button onClick={() => console.log("click")}>Delete</button>
+                  <button onClick={() => handleDelete(index)}>Delete</button>
               </div>
             </li>
           ))}

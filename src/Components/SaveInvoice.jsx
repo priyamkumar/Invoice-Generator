@@ -2,9 +2,11 @@ import React from "react";
 
 export default function SaveInvoice({ invoicesArr, setInfo, info, totalAmount, totalGst }) {
   const [invoices, setInvoices] = invoicesArr;
-  const [setItems, setDetails] = setInfo;
+  const [setItems, setDetails, setInvoiceDetails, setBankDetails] = setInfo;
   const [items, details, invoiceDetails, bankDetails] = info;
   const total = totalAmount + totalGst;
+  let today = new Date().toISOString().split("T")[0];
+
   const handleSave = () => {
     if (!invoices.includes(invoiceDetails.invoiceNumber)) {
       let updateInvoices = [...invoices, invoiceDetails.invoiceNumber];
@@ -46,8 +48,20 @@ export default function SaveInvoice({ invoicesArr, setInfo, info, totalAmount, t
       clientEmail: "",
       clientGst: "",
     });
+    setInvoiceDetails({
+      invoiceNumber: 1,
+      invoiceDate: today,
+      gstNum: "",
+    });
+    setBankDetails({
+      bankName: "",
+      bankAccountNumber: 0,
+      bankBranchIfsc: "",
+    })
     localStorage.removeItem("items");
     localStorage.removeItem("details");
+    localStorage.removeItem("invoiceDetails");
+    localStorage.removeItem("bankDetails");
   };
 
   return (
