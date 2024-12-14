@@ -9,17 +9,22 @@ export default function Invoices() {
   let invoiceData = invoices.map((el) => JSON.parse(localStorage.getItem(el)));
 
   const handleDelete = (index) => {
-    let deletedInvoice = invoices.filter((_, id) => id === index);
+    let deletedInvoice = invoices.find((_, id) => id === index);
     let invoicesLeft = invoices.filter((_, id) => id !== index);
+    console.log(deletedInvoice)
     setInvoices(invoicesLeft);
     localStorage.removeItem(deletedInvoice);
     localStorage.setItem("invoices", JSON.stringify(invoicesLeft));
   };
+
+  const handleEdit = () => {
+    console.log("click")
+  }
   return (
     <div className={`all-invoices ${isDark ? "dark" : ""}`}>
       <h2>Saved Invoices</h2>
       {!invoices || invoices.length === 0 ? (
-        <p>No invoices saved yet.</p>
+        <p className="no-invoices">No invoices saved yet.</p>
       ) : (
         <ol>
           {invoiceData.map((invoice, index) => (
@@ -36,7 +41,7 @@ export default function Invoices() {
                     <strong>Amount:</strong> {invoice[4]}
                   </p>
                 </div>
-                <button onClick={() => console.log("click")}>Edit</button>
+                <button onClick={handleEdit}>Edit</button>
                 <button onClick={() => handleDelete(index)}>Delete</button>
               </div>
             </li>

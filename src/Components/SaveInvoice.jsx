@@ -17,6 +17,7 @@ export default function SaveInvoice({ invoicesArr, setInfo, info, totalAmount, t
       invoiceDetails.invoiceNumber,
       JSON.stringify([...items, details, invoiceDetails, bankDetails, total])
     );
+    alert("Invoice Saved")
   };
 
   const handleNew = () => {

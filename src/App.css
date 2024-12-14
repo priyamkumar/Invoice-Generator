@@ -1,5 +1,5 @@
 html {
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable;  
 }
 
 body {
@@ -567,6 +567,16 @@ button:hover {
   margin: 0 0 40px;
   padding: 30px;
   text-align: center;
+}
+
+.no-invoices {
+  text-align: center;
+}
+
+.all-invoices ol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .all-invoice-details {
