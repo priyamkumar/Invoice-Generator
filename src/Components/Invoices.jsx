@@ -1,24 +1,33 @@
 import React from "react";
 import { useTheme } from "../Contexts/ThemeContext";
 import { useInvoice } from "../Contexts/InvoiceContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Invoices() {
   const { isDark } = useTheme();
-  const { invoices, setInvoices } = useInvoice();
+  const { invoices, setInvoices, setEdit, setEditData } = useInvoice();
 
   let invoiceData = invoices.map((el) => JSON.parse(localStorage.getItem(el)));
+
+  let navigate = useNavigate(); 
+
+  const routeChange = () => {
+    let path = "/"
+    navigate(path);
+  }
 
   const handleDelete = (index) => {
     let deletedInvoice = invoices.find((_, id) => id === index);
     let invoicesLeft = invoices.filter((_, id) => id !== index);
-    console.log(deletedInvoice)
     setInvoices(invoicesLeft);
     localStorage.removeItem(deletedInvoice);
     localStorage.setItem("invoices", JSON.stringify(invoicesLeft));
   };
 
-  const handleEdit = () => {
-    console.log("click")
+  const handleEdit = (invoice) => {
+    setEdit(true);
+    setEditData(invoice);
+    routeChange();
   }
   return (
     <div className={`all-invoices ${isDark ? "dark" : ""}`}>
@@ -41,7 +50,7 @@ export default function Invoices() {
                     <strong>Amount:</strong> {invoice[4]}
                   </p>
                 </div>
-                <button onClick={handleEdit}>Edit</button>
+                <button onClick={() => handleEdit(invoice)}>Edit</button>
                 <button onClick={() => handleDelete(index)}>Delete</button>
               </div>
             </li>

@@ -1,13 +1,16 @@
 import React from "react";
+import { useInvoice } from "../Contexts/InvoiceContext";
 
-export default function SaveInvoice({ invoicesArr, setInfo, info, totalAmount, totalGst }) {
-  const [invoices, setInvoices] = invoicesArr;
+export default function SaveInvoice({setInfo, info, totalAmount, totalGst }) {
+  const {invoices, setInvoices, setEdit, setEditData} = useInvoice()
   const [setItems, setDetails, setInvoiceDetails, setBankDetails] = setInfo;
   const [items, details, invoiceDetails, bankDetails] = info;
   const total = totalAmount + totalGst;
   let today = new Date().toISOString().split("T")[0];
 
   const handleSave = () => {
+    setEdit(false);
+    setEditData([]);
     if (!invoices.includes(invoiceDetails.invoiceNumber)) {
       let updateInvoices = [...invoices, invoiceDetails.invoiceNumber];
       setInvoices(updateInvoices);
@@ -21,6 +24,8 @@ export default function SaveInvoice({ invoicesArr, setInfo, info, totalAmount, t
   };
 
   const handleNew = () => {
+    setEdit(false);
+    setEditData([]);
     setItems([
       {
         serial: 1,

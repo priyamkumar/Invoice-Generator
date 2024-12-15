@@ -10,58 +10,70 @@ import SaveInvoice from "./SaveInvoice";
 import { useInvoice } from "../Contexts/InvoiceContext";
 
 export default function BillInfo() {
+  const { invoices, edit, setEdit, editData, setEditDatas } = useInvoice();
+  console.log(editData);
+
   const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("items")) || [
-      {
-        serial: 1,
-        hsn: "",
-        description: "",
-        quantity: 1,
-        unit: "",
-        price: 0,
-        cgst: "",
-        cgstAmount: 0,
-        utgst: "",
-        utgstAmount: 0,
-        igst: "",
-        igstAmount: 0,
-        amount: 0,
-      },
-    ]
+    edit
+      ? [editData[0]]
+      : JSON.parse(localStorage.getItem("items")) || [
+          {
+            serial: 1,
+            hsn: "",
+            description: "",
+            quantity: 1,
+            unit: "",
+            price: 0,
+            cgst: "",
+            cgstAmount: 0,
+            utgst: "",
+            utgstAmount: 0,
+            igst: "",
+            igstAmount: 0,
+            amount: 0,
+          },
+        ]
   );
 
   const [details, setDetails] = useState(
-    JSON.parse(localStorage.getItem("details")) || {
-      cName: "Company Name",
-      cAddress: "",
-      cPhone: "",
-      cEmail: "",
-      clientName: "",
-      clientAddress: "",
-      clientPhone: "",
-      clientEmail: "",
-      clientGst: "",
-    }
+    edit
+      ? editData[1]
+      : JSON.parse(localStorage.getItem("details")) || {
+          cName: "Company Name",
+          cAddress: "",
+          cPhone: "",
+          cEmail: "",
+          clientName: "",
+          clientAddress: "",
+          clientPhone: "",
+          clientEmail: "",
+          clientGst: "",
+        }
   );
-  
+
   const [amountInWords, setAmountInWords] = useState("");
-  
+
   let today = new Date().toISOString().split("T")[0];
-  
-  const {invoices, setInvoices} = useInvoice();
-  
-  const [invoiceDetails, setInvoiceDetails] = useState(JSON.parse(localStorage.getItem("invoiceDetails")) || {
-    invoiceNumber: invoices.length + 1,
-    invoiceDate: today,
-    gstNum: "",
-  });
 
-  const [bankDetails, setBankDetails] = useState(JSON.parse(localStorage.getItem("bankDetails")) || {
-    bankName: "",
-    bankAccountNumber: 0,
-    bankBranchIfsc: "",
-  });
+  const [invoiceDetails, setInvoiceDetails] = useState(
+    edit
+      ? editData[2]
+      : JSON.parse(localStorage.getItem("invoiceDetails")) || {
+          invoiceNumber: invoices.length + 1,
+          invoiceDate: today,
+          gstNum: "",
+        }
+  );
 
+  const [bankDetails, setBankDetails] = useState(
+    edit
+      ? editData[3]
+      : JSON.parse(localStorage.getItem("bankDetails")) || {
+          bankName: "",
+          bankAccountNumber: 0,
+          bankBranchIfsc: "",
+        }
+  );
 
   const totalAmount = items.reduce(
     (acc, cur) => acc + parseFloat(cur.amount || 0),
@@ -221,7 +233,6 @@ export default function BillInfo() {
       <TotalAmount totalAmount={totalAmount} totalGst={totalGst} />
       <BankDetails bankDetailsArr={[bankDetails, setBankDetails]} />
       <SaveInvoice
-        invoicesArr={[invoices, setInvoices]}
         setInfo={[setItems, setDetails, setInvoiceDetails, setBankDetails]}
         info={[items, details, invoiceDetails, bankDetails]}
         totalAmount={totalAmount}

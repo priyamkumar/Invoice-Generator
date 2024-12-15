@@ -7,8 +7,11 @@ export function InvoiceProvider({ children }) {
     JSON.parse(localStorage.getItem("invoices")) || []
   );
 
+  const [edit, setEdit] = useState(false);
+  const [editData, setEditData] = useState([]);
+
   return (
-    <InvoiceContext.Provider value={{ invoices, setInvoices }}>
+    <InvoiceContext.Provider value={{ invoices, setInvoices, edit, setEdit, editData, setEditData}}>
       {children}
     </InvoiceContext.Provider>
   );
