@@ -11,6 +11,7 @@ export default function SaveInvoice({setInfo, info, totalAmount, totalGst }) {
   const handleSave = () => {
     setEdit(false);
     setEditData([]);
+    console.log(invoices.includes(invoiceDetails.invoiceNumber))
     if (!invoices.includes(invoiceDetails.invoiceNumber)) {
       let updateInvoices = [...invoices, invoiceDetails.invoiceNumber];
       setInvoices(updateInvoices);
@@ -55,7 +56,7 @@ export default function SaveInvoice({setInfo, info, totalAmount, totalGst }) {
       clientGst: "",
     });
     setInvoiceDetails({
-      invoiceNumber: 1,
+      invoiceNumber: String(invoices.length + 1),
       invoiceDate: today,
       gstNum: "",
     });

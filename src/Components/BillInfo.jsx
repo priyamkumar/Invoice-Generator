@@ -59,7 +59,7 @@ export default function BillInfo() {
     edit
       ? editData[2]
       : JSON.parse(localStorage.getItem("invoiceDetails")) || {
-          invoiceNumber: invoices.length + 1,
+          invoiceNumber: String(invoices.length + 1),
           invoiceDate: today,
           gstNum: "",
         }
