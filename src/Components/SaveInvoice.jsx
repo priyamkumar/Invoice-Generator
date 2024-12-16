@@ -11,7 +11,6 @@ export default function SaveInvoice({setInfo, info, totalAmount, totalGst }) {
   const handleSave = () => {
     setEdit(false);
     setEditData([]);
-    console.log(invoices.includes(invoiceDetails.invoiceNumber))
     if (!invoices.includes(invoiceDetails.invoiceNumber)) {
       let updateInvoices = [...invoices, invoiceDetails.invoiceNumber];
       setInvoices(updateInvoices);

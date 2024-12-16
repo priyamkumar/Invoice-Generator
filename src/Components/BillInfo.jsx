@@ -11,7 +11,6 @@ import { useInvoice } from "../Contexts/InvoiceContext";
 
 export default function BillInfo() {
   const { invoices, edit, setEdit, editData, setEditDatas } = useInvoice();
-  console.log(editData);
 
   const [items, setItems] = useState(
     edit

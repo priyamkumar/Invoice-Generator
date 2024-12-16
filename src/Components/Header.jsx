@@ -1,4 +1,4 @@
-import AppName from "./AppName.jsx";
+import AppName from "./AppName";
 import Navbar from "./Navbar";
 import { useTheme } from "../Contexts/ThemeContext";
 
